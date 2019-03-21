@@ -4,7 +4,10 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
-Plugins/*
+Plugins/Github/*
+
+# VSCode
+.vscode/
 
 # VSCode
 .vscode/
