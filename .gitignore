@@ -6,6 +6,9 @@
 Assets/AssetStoreTools*
 Plugins/*
 
+# VSCode
+.vscode/
+
 # Visual Studio cache directory
 .vs/
 
