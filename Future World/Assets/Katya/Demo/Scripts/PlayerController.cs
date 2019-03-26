@@ -9,15 +9,37 @@ public class PlayerController : MonoBehaviour
     public Transform leftGunBone;
     public Arsenal[] arsenal;
 
+    public float speed = 12f;
+    public float turnSpeed = 180f;
+    
+    private float movementInputValue;
+    private float turnInputValue;
+
     private Actions actions;
     private Animator animator;
+    private Vector3 movement;
+    private Rigidbody playerRigidbody;
 
     void Awake()
     {
         actions = GetComponent<Actions>();
         animator = GetComponent<Animator>();
-        if (arsenal.Length > 0)
-            SetArsenal(arsenal[0].name);
+        playerRigidbody = GetComponent<Rigidbody>();
+        //if (arsenal.Length > 0)
+        //    SetArsenal(arsenal[0].name);
+    }
+
+    private void OnEnable()
+    {
+        playerRigidbody.isKinematic = false;
+
+        movementInputValue = 0f;
+        turnInputValue = 0f;
+    }
+
+    private void OnDisable()
+    {
+        playerRigidbody.isKinematic = true;
     }
 
     public void SetArsenal(string name)
@@ -44,7 +66,7 @@ public class PlayerController : MonoBehaviour
                     newLeftGun.transform.localPosition = Vector3.zero;
                     newLeftGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
                 }
-                animator.runtimeAnimatorController = hand.controller;
+                //animator.runtimeAnimatorController = hand.controller;
                 return;
             }
         }
@@ -52,7 +74,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        movementInputValue = Input.GetAxis("Vertical");
+        turnInputValue = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             actions.Walk();
         }
@@ -69,8 +94,34 @@ public class PlayerController : MonoBehaviour
         {
             actions.GetUp();
         }
+
     }
 
+    private void FixedUpdate()
+    {
+        Move();
+        Turn();
+    }
+
+    private void Move()
+    {
+        Vector3 movement = transform.forward * movementInputValue * speed * Time.deltaTime;
+
+        playerRigidbody.MovePosition(playerRigidbody.position + movement);
+    }
+
+    private void Turn()
+    {
+        float turn = turnInputValue * turnSpeed * Time.deltaTime;
+        
+        gameObject.transform.Rotate(0, turnInputValue * turnSpeed * Time.deltaTime, 0);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // TODO: Add collision handling depending on tags of objects
+        actions.Damage();
+    }
 
     [System.Serializable]
     public struct Arsenal
