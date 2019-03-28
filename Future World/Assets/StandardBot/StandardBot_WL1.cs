@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class StandardBot_WL1 : MonoBehaviour { 
 
-    private float movementSpeed = 25f;
-    private float rotationSpeed = 500f;
+    private float movementSpeed = 2f;
     private int health = 15;
 
     private bool moving = false;
     private int moveCount = 0;
     private int rotateCount = 0;
 
-    private int ROTATE_LIM = 10;
-    private int MOVE_LIM = 50;
+    private int ROTATE_LIM = 45;
+    private int MOVE_LIM = 75;
 
     // Start is called before the first frame update
     void Start() {
