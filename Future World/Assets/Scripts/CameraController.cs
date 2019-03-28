@@ -6,10 +6,13 @@ public class CameraController : MonoBehaviour
 {
     public GameObject katya;
 
-    public float distance = 10.0f;
-    public float height = 5.0f;
+    public float distance = 4f;
+    public float height = 1.33f;
     public float heightDamping = 2.0f;
-    public float rotationDamping = 3.0f;
+    public float rotationDamping = 5.0f;
+
+    public float katyaPositionXOffset = 0f;
+    public float katyaLookatYOffset = -0.4f;
 
 
     private Vector3 offset;
@@ -35,11 +38,9 @@ public class CameraController : MonoBehaviour
         transform.position = katya.transform.position;
         transform.position -= currentRotation * Vector3.forward * distance;
 
-        transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
-
-        //Transform tempTransform = katya.transform;
-        //katya.transform.y += 1;
-        transform.LookAt(katya.transform);
+        transform.position = new Vector3(transform.position.x + katyaPositionXOffset, currentHeight, transform.position.z);
+        
+        transform.LookAt(new Vector3(katya.transform.position.x, transform.position.y + katyaLookatYOffset, katya.transform.position.z));
 
         //transform.position = katya.transform.position + offset;
     }
