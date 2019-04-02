@@ -126,6 +126,10 @@ public class PlayerController : MonoBehaviour, Target
 			actions.Aiming();
 			
 		}
+        else if (Input.GetMouseButtonUp(1))
+        {
+            actions.Stay();
+        }
 		if (Input.GetKeyDown(KeyCode.F))
 		{
 			SwitchWeapon();

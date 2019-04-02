@@ -13,8 +13,8 @@ public class CharacterPanel : MonoBehaviour {
 	public Button buttonPrefab;
 	public Slider motionSpeed;
 
-	Actions actions;
-	PlayerController controller;
+    DemoActions actions;
+	DemoPlayerController controller;
 	Camera[] cameras;
 
 	void Start () {
@@ -22,10 +22,10 @@ public class CharacterPanel : MonoBehaviour {
 	}
 
 	void Initialize () {
-		actions = character.GetComponent<Actions> ();
-		controller = character.GetComponent<PlayerController> ();
+		actions = character.GetComponent<DemoActions> ();
+		controller = character.GetComponent<DemoPlayerController> ();
 
-		foreach (PlayerController.Arsenal a in controller.arsenal)
+		foreach (DemoPlayerController.Arsenal a in controller.arsenal)
 			CreateWeaponButton(a.name);
 
 		CreateActionButton("Stay");
