@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+
   - StaticObjects
   - Katya
+  - Shooties
   layers:
   - Default
   - TransparentFX
@@ -18,6 +20,8 @@ TagManager:
   - PostProcessing
   - StaticObjects
   - Katya
+  - Bot
+  - Shooties
   - 
   - 
   - 
