@@ -247,20 +247,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
-      propertyPath: turnSpeed
+      propertyPath: speeds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[0].name
+      value: turn
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[1].name
+      value: walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[1].speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[2].name
+      value: run
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[2].speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[0].speed
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
-      propertyPath: fpsCam
-      value: 
-      objectReference: {fileID: 1045737438}
+      propertyPath: speeds.Array.data[3].name
+      value: crouch-walk
+      objectReference: {fileID: 0}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 9132225252922377763, guid: 41bc3253ca02f0340941190ac08c7ac1,
+      propertyPath: speeds.Array.data[3].speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
+      propertyPath: speeds.Array.data[4].name
+      value: crouch-run
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[4].speed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c80dc1fb49f0458155903ab118114, type: 3}
 --- !u!1 &707790537
@@ -784,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 1976262645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 10, y: 0.5, z: 10}
+  m_LocalScale: {x: 1000, y: 0.5, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

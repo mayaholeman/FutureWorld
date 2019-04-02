@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, Target
@@ -8,9 +9,11 @@ public class PlayerController : MonoBehaviour, Target
     public Transform rightGunBone;
     public Transform leftGunBone;
     public Arsenal[] arsenal;
+    
+    public Speed[] speeds;
 
-    public float speed = 12f;
-    public float turnSpeed = 180f;
+    private IDictionary<string, float> speedsDict;
+    private string movementSpeedKey = "walk";
 
 	private float turnInputValue;
 
@@ -36,6 +39,11 @@ public class PlayerController : MonoBehaviour, Target
         playerRigidbody = GetComponent<Rigidbody>();
 		if (arsenal.Length > 0)
 			SetArsenal(arsenal[0].name);
+        speedsDict = new Dictionary<string, float>();
+        foreach (Speed item in speeds)
+        {
+            speedsDict.Add(item.name, item.speed);
+        }
 	}
 
 	private void OnEnable()
@@ -81,30 +89,46 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
-        {
-            actions.Sitting();
-        }
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
         {
             actions.GetUp();
         }
 
-		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && Input.GetKeyDown(KeyCode.Space))
+        if (IsMoving() && IsJumping())
 		{
-			print("walking and jump hit");
 			actions.Jump();
 		}
-		else if (Input.GetKeyDown(KeyCode.Space))
+		else if (IsJumping())
 		{
-			print("jump hit");
 			actions.Jump();
-		}
-		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        }
+        else if (IsMoving() && IsRunning() && IsCrouching())
+        {
+            movementSpeedKey = "crouch-run";
+            actions.Sitting();
+            actions.Run();
+        }
+        else if (IsMoving() && IsRunning())
+        {
+            movementSpeedKey = "run";
+            actions.Run();
+        }
+        else if (IsMoving() && IsCrouching())
+        {
+            movementSpeedKey = "crouch-walk";
+            actions.Sitting();
+            actions.Walk();
+        }
+        else if (IsMoving())
 		{
-			print("walking");
-			actions.Walk();
+            movementSpeedKey = "walk";
+            actions.Walk();
 		}
+        else if (IsCrouching())
+        {
+            actions.Stay();
+            actions.Sitting();
+        }
 		else
 		{
 			actions.Stay();
@@ -112,7 +136,6 @@ public class PlayerController : MonoBehaviour, Target
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("Left button down");
 			actions.Attack();
 			if (arsenalIndex != 0)
 			{
@@ -122,7 +145,6 @@ public class PlayerController : MonoBehaviour, Target
 		}
 		if (Input.GetMouseButton(1))
 		{
-			Debug.Log("Right button down");
 			actions.Aiming();
 			
 		}
@@ -130,12 +152,33 @@ public class PlayerController : MonoBehaviour, Target
         {
             actions.Stay();
         }
+
 		if (Input.GetKeyDown(KeyCode.F))
 		{
 			SwitchWeapon();
 		}
 
 	}
+
+    private bool IsMoving()
+    {
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+    }
+
+    private bool IsRunning()
+    {
+        return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+    }
+
+    private bool IsJumping()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
+
+    private bool IsCrouching()
+    {
+        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+    }
 
 	private void FixedUpdate()
     {
@@ -145,13 +188,14 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Move()
     {
+        // TODO: change to be based on character facing position instead of original position
 		Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-		gameObject.transform.position += movement * speed * Time.deltaTime;
+        gameObject.transform.position += movement * speedsDict[movementSpeedKey] * Time.deltaTime;
     }
 
     private void Turn()
     {
-		yaw += turnSpeed * Input.GetAxis("Mouse X");
+		yaw += speedsDict["turn"] * Input.GetAxis("Mouse X");
 		gameObject.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
     }
 
@@ -216,5 +260,12 @@ public class PlayerController : MonoBehaviour, Target
         public GameObject rightGun;
         public GameObject leftGun;
         public RuntimeAnimatorController controller;
+    }
+
+    [System.Serializable]
+    public struct Speed
+    {
+        public string name;
+        public float speed;
     }
 }
