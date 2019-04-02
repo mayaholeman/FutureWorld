@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ProjectileHero
+  - Shooties
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Bot
+  - Shooties
   - 
   - 
   - 
