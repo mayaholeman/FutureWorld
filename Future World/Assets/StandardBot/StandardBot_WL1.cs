@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardBot_WL1 : MonoBehaviour { 
-
-    private float movementSpeed = 2f;
-    private int health = 15;
+public class StandardBot_WL1 : StandardBot { 
 
     private bool moving = false;
     private int moveCount = 0;
@@ -13,11 +10,6 @@ public class StandardBot_WL1 : MonoBehaviour {
 
     private int ROTATE_LIM = 45;
     private int MOVE_LIM = 75;
-
-    // Start is called before the first frame update
-    void Start() {
-
-    }
 
     // Update is called once per frame
     void Update() {
@@ -57,14 +49,5 @@ public class StandardBot_WL1 : MonoBehaviour {
             transform.Rotate(0, Time.deltaTime * -rotationSpeed, 0);
         }*/
         
-    }
-
-    public Vector3 pos {
-        get {
-            return (this.transform.position);
-        }
-        set {
-            this.transform.position = value;
-        }
     }
 }
