@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Shootie : MonoBehaviour
 {
     [Header("Set in Inspector")]
     public GameObject shootie;
