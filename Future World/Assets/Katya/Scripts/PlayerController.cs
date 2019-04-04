@@ -188,8 +188,7 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Move()
     {
-        // TODO: change to be based on character facing position instead of original position
-		Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         gameObject.transform.position += movement * speedsDict[movementSpeedKey] * Time.deltaTime;
     }
 
