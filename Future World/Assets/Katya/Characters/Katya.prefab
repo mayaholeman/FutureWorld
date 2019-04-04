@@ -1667,8 +1667,18 @@ MonoBehaviour:
     rightGun: {fileID: 100000, guid: 1493f9878f1a95c4e8e3499f6ee36d07, type: 3}
     leftGun: {fileID: 100000, guid: 1493f9878f1a95c4e8e3499f6ee36d07, type: 3}
     controller: {fileID: 9100000, guid: dbad280ee68364a458cdd686ee45b5d5, type: 2}
-  speed: 1
-  turnSpeed: 180
+  speeds:
+  - name: turn
+    speed: 2
+  - name: walk
+    speed: 12
+  - name: run
+    speed: 20
+  muzzleFlash: {fileID: 9132225252922377763, guid: 41bc3253ca02f0340941190ac08c7ac1,
+    type: 3}
+  damage: 10
+  health: 100
+  range: 100
 --- !u!54 &616595267151171081
 Rigidbody:
   m_ObjectHideFlags: 0
