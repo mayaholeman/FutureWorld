@@ -1671,9 +1671,13 @@ MonoBehaviour:
   - name: turn
     speed: 2
   - name: walk
-    speed: 12
+    speed: 0.5
   - name: run
-    speed: 20
+    speed: 1.5
+  - name: crouch-walk
+    speed: 0.4
+  - name: crouch-run
+    speed: 1
   muzzleFlash: {fileID: 9132225252922377763, guid: 41bc3253ca02f0340941190ac08c7ac1,
     type: 3}
   damage: 10
