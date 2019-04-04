@@ -29,5 +29,18 @@ public class ShootScript : MonoBehaviour
         rb.velocity = Vector3.left * speed;
 
         shootctr = 50;
+
+        Debug.Log("Shoot");
+
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position, Vector3.left, out hit, 100f))
+		{
+			Debug.Log(hit.transform.name);
+			Target target = hit.transform.GetComponent<Target>();
+			if (target != null)
+			{
+				target.takeDamage(10);
+			}
+		}
     }
 }

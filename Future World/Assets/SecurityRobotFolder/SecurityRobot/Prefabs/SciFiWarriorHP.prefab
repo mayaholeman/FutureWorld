@@ -2214,7 +2214,7 @@ GameObject:
   - component: {fileID: 1053034372}
   - component: {fileID: 1053034373}
   - component: {fileID: 1053034376}
-  - component: {fileID: 1053034377}
+  - component: {fileID: 7100988167626451714}
   m_Layer: 0
   m_Name: SciFiWarriorHP
   m_TagString: Untagged
@@ -2314,7 +2314,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1053034377
+--- !u!114 &7100988167626451714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2326,6 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57423ae51a9008f4a9c234acd89c3677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  me: {fileID: 1777870699331626}
 --- !u!1 &1802497791705444
 GameObject:
   m_ObjectHideFlags: 0
