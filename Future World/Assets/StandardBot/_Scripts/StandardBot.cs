@@ -10,32 +10,6 @@ public class StandardBot : MonoBehaviour, Target {
     protected float health = 15f;
     protected float movementSpeed = 2f;
 
-    public void DealDamage(int damage)
-    {
-        health -= damage;
-        if (health < 0) {
-            health = 0;
-        }
-        print(damage + " damage dealt. (" + health + " remaining)");
-        
-        if (health == 0)
-        {
-            print("Robot destroyed");
-            Destroy(me);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        GameObject go = collision.gameObject;
-
-        if (go.tag == "Shooties")
-        {
-            Destroy(go);
-            DealDamage(10);
-        }
-    }
-
     public float Health
     {
         get { return this.health; }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecurityRobotMovement : MonoBehaviour
+public class SecurityRobot : MonoBehaviour
 {
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
