@@ -23,8 +23,7 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 	public ParticleSystem muzzleFlash;
-
-	public float damage = 10f;
+    
 	public float health = 100f;
 	public float range = 100f;
 
@@ -96,7 +95,8 @@ public class PlayerController : MonoBehaviour, Target
 
         if (IsMoving() && IsJumping())
 		{
-			actions.Jump();
+            actions.Stay();
+            actions.Jump();
 		}
 		else if (IsJumping())
 		{
@@ -208,18 +208,38 @@ public class PlayerController : MonoBehaviour, Target
 
 	void Shoot()
 	{
-		muzzleFlash.Play();
-		RaycastHit hit;
-		if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, range))
-		{
-			Debug.Log(hit.transform.name);
-			Target target = hit.transform.GetComponent<Target>();
-			if (target != null)
-			{
-				target.takeDamage(damage);
-			}
-		}
+        foreach (Arsenal hand in arsenal)
+        {
+            if (hand.name == arsenal[arsenalIndex].name)
+            {
+                if (hand.rightGun != null)
+                {
+                    GameObject rightGun = rightGunBone.GetChild(0).gameObject;
+                    Shoot(rightGun, hand.damage);
+                }
+                if (hand.leftGun != null)
+                {
+                    GameObject leftGun = leftGunBone.GetChild(0).gameObject;
+                    Shoot(leftGun, hand.damage);
+                }
+                return;
+            }
+        }		
 	}
+
+    private void Shoot(GameObject gun, float damage)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(gun.transform.position, gameObject.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+            Target target = hit.transform.GetComponent<Target>();
+            if (target != null)
+            {
+                target.takeDamage(damage);
+            }
+        }
+    }
 
 	public float Health
 	{
@@ -259,6 +279,7 @@ public class PlayerController : MonoBehaviour, Target
         public GameObject rightGun;
         public GameObject leftGun;
         public RuntimeAnimatorController controller;
+        public float damage;
     }
 
     [System.Serializable]
