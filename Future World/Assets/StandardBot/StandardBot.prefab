@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7288552359331923858}
   - component: {fileID: 7288552359331923868}
   - component: {fileID: 821575963}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: StandardBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7288552359331923859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.014159918, y: 2.5963988, z: -0.0038995743}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 0.15}
   m_Children:
   - {fileID: 7293308516518879938}
   m_Father: {fileID: 0}
@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1928244954057134, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4832031578413854, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,19 +209,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1849667493632884, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1855245367226062, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1933460375180758, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1245844026398450, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efdc095f88074e53a4f28617077b108, type: 3}
