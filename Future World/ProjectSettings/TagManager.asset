@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+
+  - StaticObjects
+  - Katya
+  - Shooties
   layers:
   - Default
   - TransparentFX
@@ -14,8 +18,10 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - StaticObjects
+  - Katya
+  - Bot
+  - Shooties
   - 
   - 
   - 
@@ -40,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Katya
+    uniqueID: 2490548493
+    locked: 0
+  - name: StaticObject
+    uniqueID: 1746110447
     locked: 0
