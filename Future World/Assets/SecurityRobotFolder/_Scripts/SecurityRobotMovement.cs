@@ -2,42 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecurityRobotMovement : MonoBehaviour, Target
+public class SecurityRobotMovement : MonoBehaviour
 {
+    Transform player;                   // Reference to the player's position.
+    UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
+    Animator anim;                      // Reference to the animator component.
 
-	[Header("Set in Inspector")]
-	public GameObject me;
 
-	private float health = 65f;
-
-    void Start()
+    void Awake()
     {
-        
-    }
-    
-    void Update()
-    {
-        
+        // Set up the references.
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
-    public float Health
-    {
-        get { return this.health; }
-        set { this.health = value; }
-    }
 
-    public void Die()
+    void FixedUpdate()
     {
-        Destroy(me);
-    }
-
-    public void takeDamage(float amount)
-    {
-        Debug.Log("Security Bot took " + amount + " damage");
-        this.health -= amount;
-        if (this.health <= 0)
+        float dist = Vector3.Distance(player.position, transform.position);
+        if (dist > 2)
         {
-            Die();
+            // Tell the animator whether or not the robot is moving.
+            anim.SetBool("IsMoving", true);
+
+            // Set the destination of the nav mesh agent to the player.
+            nav.SetDestination(player.position);
         }
+        else
+        {
+            nav.enabled = false;
+
+            // Tell the animator whether or not the robot is moving.
+            anim.SetBool("IsMoving", false);
+        }
+        
     }
 }

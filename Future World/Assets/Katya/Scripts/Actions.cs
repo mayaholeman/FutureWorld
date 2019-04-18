@@ -62,7 +62,6 @@ public class Actions : MonoBehaviour
     public void Jump()
     {
 		animator.SetBool("Squat", false);
-		animator.SetFloat("Speed", 0f);
 		animator.SetBool("Aiming", false);
         animator.SetTrigger("Jump");
     }
