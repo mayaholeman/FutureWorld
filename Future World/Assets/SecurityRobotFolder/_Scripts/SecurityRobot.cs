@@ -37,7 +37,7 @@ public class SecurityRobot : MonoBehaviour, Target
     void Awake()
     {
         // Set up the references.
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Katya").transform;
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         robotGun = GetChildWithName(this.gameObject, "AssualtRifle");
