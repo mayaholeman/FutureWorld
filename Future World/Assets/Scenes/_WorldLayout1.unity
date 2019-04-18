@@ -179,59 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: arsenal.Array.data[1].damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: arsenal.Array.data[2].damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: arsenal.Array.data[0].damage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: speeds.Array.data[0].speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: impactEffect
-      value: 
-      objectReference: {fileID: 100002, guid: 957385c45b877e645a128e11a3efb2f9, type: 3}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 19800004, guid: 7e9c50938e32351438a7df9ccad2f2a5,
-        type: 3}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: crossHair
-      value: 
-      objectReference: {fileID: 7947453781557298760, guid: 2945def9d39c5be4790f2ffbb24bd2d7,
-        type: 3}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: crossHairPrefab
-      value: 
-      objectReference: {fileID: 7375796300805040149, guid: 4ababd1a3dcb9dc4ebaf8bf9b42838f9,
-        type: 3}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: impactForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: fireRate
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9230cf8f0d1a41648ac58be0d650b040, type: 3}
 --- !u!1001 &127186142
