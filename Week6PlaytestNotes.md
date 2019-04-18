@@ -1,0 +1,27 @@
+# Week 6 Playtest Notes
+
+- Change training M1 to Left/Right click
+- Add more text to tutorial to explain what to do
+  - Add crosshair/hitmarker for shooting
+- If mouse allows you to turn, do not use WASD for left/right
+- moving animstion is faster than the physical distance traveled
+- gun fires before animation goes off
+- cant run and jump
+- jump doesnt let you jump over obstacles
+- visual representation when the gun shoots (laser)
+- no strafing animation yet (a and d keys)
+- camera wierd than its doesnt go up and down (firing above and below)
+- maybe an aim then fire type control (right click to aim and show cross hair)
+- make the mouse cursor disappear
+- use a mesh collider for Katya so jumping actually works
+- add some sound affects
+- accuracy vs damage for single gun vs dual guns (or some other trade-off)
+- ammo
+- inform player they can draw two guns
+- inform player that they can sprint
+- healthbar
+- walk feels slow (by almost everyone)
+- Katya is floating by only a little bit
+- Add a roof and lighting to the room
+- add a texture to the floor and walls
+- Add wall fading ability (good for when camera is stuck in the wall)
