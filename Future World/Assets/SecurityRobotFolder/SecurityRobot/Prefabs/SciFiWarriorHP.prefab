@@ -2270,7 +2270,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777870699331626}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: Infinity
   m_AngularDrag: Infinity
   m_UseGravity: 1
@@ -2288,7 +2288,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -2313,7 +2313,7 @@ NavMeshAgent:
   m_Height: 0.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &7100988167626451714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57423ae51a9008f4a9c234acd89c3677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  me: {fileID: 1777870699331626}
+  me: {fileID: 0}
 --- !u!1 &1802497791705444
 GameObject:
   m_ObjectHideFlags: 0
