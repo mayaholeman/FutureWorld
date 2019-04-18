@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour, Target
 	public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
-    public GameObject crossHair;
-
     public float impactForce = 100f;
 
     public float fireRate = 15f;
@@ -194,25 +192,20 @@ public class PlayerController : MonoBehaviour, Target
     {
         Move();
         Turn();
+        
     }
 
     private void Move()
     {
         Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         gameObject.transform.position += movement * speedsDict[movementSpeedKey] * Time.deltaTime;
-
-        // if(crossHair != null) {
-        //     Debug.Log("Changing crosshair");
-        //     RaycastHit hit;
-        //     Physics.Raycast(rightGunBone.transform.position, gameObject.transform.forward, out hit, range);
-        //     crossHair.gameObject.transform.position = hit.point;
-        // }
     }
 
     private void Turn()
     {
 		yaw += speedsDict["turn"] * Input.GetAxis("Mouse X");
 		gameObject.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+       
     }
 
 	private void SwitchWeapon()
@@ -220,12 +213,7 @@ public class PlayerController : MonoBehaviour, Target
 		arsenalIndex++;
 		if (arsenalIndex == arsenal.Length) {
             arsenalIndex = 0;
-            DestroyImmediate(crossHair, true);
         }
-        RaycastHit hit;
-        Physics.Raycast(rightGunBone.transform.position, gameObject.transform.forward, out hit, range);
-        Vector3 trans = new Vector3(30,0,0);
-        Instantiate(crossHair, hit.point + trans , Quaternion.LookRotation(hit.normal + trans));
 		SetArsenal(arsenal[arsenalIndex].name);
 		
 	}
