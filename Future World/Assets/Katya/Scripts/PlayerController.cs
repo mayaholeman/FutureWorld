@@ -23,6 +23,15 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 	public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+
+    public GameObject crossHair;
+
+    public float impactForce = 100f;
+
+    public float fireRate = 15f;
+
+    private float nextTimeToFire = 0f;
     
 	public float health = 100f;
 	public float range = 100f;
@@ -134,11 +143,12 @@ public class PlayerController : MonoBehaviour, Target
 			actions.Stay();
 		}
 
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
 		{
 			actions.Attack();
 			if (arsenalIndex != 0)
 			{
+                nextTimeToFire = Time.time + 1f/fireRate;
 				Shoot();
 			}
 			
@@ -190,6 +200,13 @@ public class PlayerController : MonoBehaviour, Target
     {
         Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         gameObject.transform.position += movement * speedsDict[movementSpeedKey] * Time.deltaTime;
+
+        // if(crossHair != null) {
+        //     Debug.Log("Changing crosshair");
+        //     RaycastHit hit;
+        //     Physics.Raycast(rightGunBone.transform.position, gameObject.transform.forward, out hit, range);
+        //     crossHair.gameObject.transform.position = hit.point;
+        // }
     }
 
     private void Turn()
@@ -201,7 +218,14 @@ public class PlayerController : MonoBehaviour, Target
 	private void SwitchWeapon()
 	{
 		arsenalIndex++;
-		if (arsenalIndex == arsenal.Length) arsenalIndex = 0;
+		if (arsenalIndex == arsenal.Length) {
+            arsenalIndex = 0;
+            DestroyImmediate(crossHair, true);
+        }
+        RaycastHit hit;
+        Physics.Raycast(rightGunBone.transform.position, gameObject.transform.forward, out hit, range);
+        Vector3 trans = new Vector3(30,0,0);
+        Instantiate(crossHair, hit.point + trans , Quaternion.LookRotation(hit.normal + trans));
 		SetArsenal(arsenal[arsenalIndex].name);
 		
 	}
@@ -238,6 +262,12 @@ public class PlayerController : MonoBehaviour, Target
             {
                 target.takeDamage(damage);
             }
+            if(hit.rigidbody != null) {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
+            }
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
+
         }
     }
 
