@@ -15,6 +15,8 @@ public class SecurityRobot : MonoBehaviour, Target
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
     Animator anim;                      // Reference to the animator component.
+    float visionRange = 200f;
+    bool seenPlayer = false;
 
     //Shooting variables
     public float shootingRange = 100f;
@@ -39,6 +41,7 @@ public class SecurityRobot : MonoBehaviour, Target
         // Set up the references.
         player = GameObject.FindGameObjectWithTag("Katya").transform;
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        nav.speed = 0.8f;
         anim = GetComponent<Animator>();
         robotGun = GetChildWithName(this.gameObject, "AssualtRifle");
     }
@@ -46,22 +49,34 @@ public class SecurityRobot : MonoBehaviour, Target
     void FixedUpdate()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist > 2)
+        if (!seenPlayer)
         {
-            // Tell the animator whether or not the robot is moving.
-            anim.SetBool("IsMoving", true);
-
-            // Set the destination of the nav mesh agent to the player.
-            nav.SetDestination(player.position);
+            RaycastHit vision;
+            //Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out vision, visionRange);
+            Physics.SphereCast(gameObject.transform.position, 2f, gameObject.transform.forward, out vision, visionRange);
+            GameObject visionTarget = vision.collider.gameObject;
+            if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            //if(dist < 2) { seenPlayer = true; }
         }
         else
         {
-            nav.enabled = false;
+            if (dist > 2)
+            {
+                // Tell the animator whether or not the robot is moving.
+                nav.enabled = true;
+                anim.SetBool("IsMoving", true);
 
-            // Tell the animator whether or not the robot is moving.
-            anim.SetBool("IsMoving", false);
+                // Set the destination of the nav mesh agent to the player.
+                nav.SetDestination(player.position);
+            }
+            else if (dist < 2)
+            {
+                nav.enabled = false;
+                this.gameObject.transform.LookAt(player.transform);
+                // Tell the animator whether or not the robot is moving.
+                anim.SetBool("IsMoving", false);
+            }
         }
-
     }
 
     private void Shoot(GameObject gun, float damage)
