@@ -9,7 +9,7 @@ public class StandardBot_WL1 : StandardBot {
     private int rotateCount = 0;
 
     private int ROTATE_LIM = 45;
-    private int MOVE_LIM = 75;
+    private int MOVE_LIM = 50;
 
     // Update is called once per frame
     void Update() {
