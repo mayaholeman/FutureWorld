@@ -22,12 +22,14 @@ public class PlayerController : MonoBehaviour, Target
     private Vector3 movement;
     private Rigidbody playerRigidbody;
 
+    public float distanceSquared = 5f;
 	public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
     public float impactForce = 100f;
 
     public float fireRate = 15f;
+
 
     private float nextTimeToFire = 0f;
     
@@ -50,8 +52,10 @@ public class PlayerController : MonoBehaviour, Target
         {
             speedsDict.Add(item.name, item.speed);
         }
-        jump = new Vector3(0.0f, 02.0f, 0.0f);
-	}
+        jump = new Vector3(0.0f, 02.0f, 0.0f); 
+        distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
+     }
+ 
 
 	private void OnEnable()
     {
@@ -290,6 +294,10 @@ public class PlayerController : MonoBehaviour, Target
 		}
 
 	}
+     public float Dist()
+     {
+         return distanceSquared; 
+     }
 
 	private void OnCollisionEnter(Collision collision)
     {
