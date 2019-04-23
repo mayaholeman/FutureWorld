@@ -11,6 +11,9 @@
      void Start()
      {
          player = GameObject.FindWithTag("Player");
+         if(player == null){
+             player = GameObject.FindWithTag("Katya");
+         }
          pC = player.GetComponent<PlayerController>();
          rend = this.GetComponent<Renderer>();
         //  rend.enabled = false;
