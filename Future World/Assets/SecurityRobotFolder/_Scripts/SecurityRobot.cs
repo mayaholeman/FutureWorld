@@ -21,7 +21,7 @@ public class SecurityRobot : MonoBehaviour, Target
     //Shooting variables
     public float shootingRange = 200f;
     GameObject robotGun;
-    int shootDelayCounter = 0;
+    int shootDelayCounter;
     float gunDamage = 10f;
 
     GameObject GetChildWithName(GameObject obj, string name)
@@ -48,6 +48,7 @@ public class SecurityRobot : MonoBehaviour, Target
         nav.speed = 0.8f;
         anim = GetComponent<Animator>();
         robotGun = GetChildWithName(this.gameObject, "AssaultRifle");
+        shootDelayCounter = Random.Range(0, 60);
     }
 
     void FixedUpdate()
