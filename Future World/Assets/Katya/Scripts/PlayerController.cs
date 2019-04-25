@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 	public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+
+    public float impactForce = 100f;
+
+    public float fireRate = 15f;
+
+    private float nextTimeToFire = 0f;
     
 	public float health = 100f;
 	public float range = 100f;
@@ -136,11 +143,12 @@ public class PlayerController : MonoBehaviour, Target
 			actions.Stay();
 		}
 
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
 		{
 			actions.Attack();
 			if (arsenalIndex != 0)
 			{
+                nextTimeToFire = Time.time + 1f/fireRate;
 				Shoot();
 			}
 			
@@ -186,6 +194,7 @@ public class PlayerController : MonoBehaviour, Target
     {
         Move();
         Turn();
+        
     }
 
     private void Move()
@@ -198,6 +207,7 @@ public class PlayerController : MonoBehaviour, Target
     {
 		yaw += speedsDict["turn"] * Input.GetAxis("Mouse X");
 		gameObject.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+       
     }
 
     private void Jump()
@@ -208,7 +218,9 @@ public class PlayerController : MonoBehaviour, Target
 	private void SwitchWeapon()
 	{
 		arsenalIndex++;
-		if (arsenalIndex == arsenal.Length) arsenalIndex = 0;
+		if (arsenalIndex == arsenal.Length) {
+            arsenalIndex = 0;
+        }
 		SetArsenal(arsenal[arsenalIndex].name);
 		
 	}
@@ -245,6 +257,12 @@ public class PlayerController : MonoBehaviour, Target
             {
                 target.takeDamage(damage);
             }
+            if(hit.rigidbody != null) {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
+            }
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
+
         }
     }
 

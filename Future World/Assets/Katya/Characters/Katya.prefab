@@ -1659,17 +1659,17 @@ MonoBehaviour:
     rightGun: {fileID: 0}
     leftGun: {fileID: 0}
     controller: {fileID: 9100000, guid: e4d38f097ea35254fb4b833d568bb089, type: 2}
-    damage: 0
+    damage: 5
   - name: One Pistol
     rightGun: {fileID: 100000, guid: 1493f9878f1a95c4e8e3499f6ee36d07, type: 3}
     leftGun: {fileID: 0}
     controller: {fileID: 9100000, guid: 8bbca7fa0e7d6cf45b625c38120c55a4, type: 2}
-    damage: 0
+    damage: 10
   - name: Two Pistols
     rightGun: {fileID: 100000, guid: 1493f9878f1a95c4e8e3499f6ee36d07, type: 3}
     leftGun: {fileID: 100000, guid: 1493f9878f1a95c4e8e3499f6ee36d07, type: 3}
     controller: {fileID: 9100000, guid: dbad280ee68364a458cdd686ee45b5d5, type: 2}
-    damage: 0
+    damage: 20
   speeds:
   - name: turn
     speed: 2
@@ -1684,8 +1684,10 @@ MonoBehaviour:
   - name: jump-force
     speed: 2
   jump: {x: 0, y: 0, z: 0}
-  muzzleFlash: {fileID: 9132225252922377763, guid: 41bc3253ca02f0340941190ac08c7ac1,
-    type: 3}
+  muzzleFlash: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+  impactEffect: {fileID: 100002, guid: 957385c45b877e645a128e11a3efb2f9, type: 3}
+  impactForce: 100
+  fireRate: 15
   health: 100
   range: 100
 --- !u!54 &616595267151171081
