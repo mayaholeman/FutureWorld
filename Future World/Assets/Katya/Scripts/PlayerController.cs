@@ -26,17 +26,14 @@ public class PlayerController : MonoBehaviour, Target
     public GameObject impactEffect;
 
     public float impactForce = 100f;
-
     public float fireRate = 15f;
 
     private float nextTimeToFire = 0f;
-    
 	public float health = 100f;
 	public float range = 100f;
-
 	private float yaw = 0.0f;
-
 	private int arsenalIndex = 0;
+    private bool stealthMode = false;
 
     void Awake()
     {
@@ -100,40 +97,57 @@ public class PlayerController : MonoBehaviour, Target
             actions.GetUp();
         }
 
-        if (IsMoving() && IsJumping())
+        // Movement Actions
+        bool isMoving = IsMoving();
+        bool isJumping = IsJumping();
+        bool isCrouching = IsCrouching();
+        bool isRunning = IsRunning();
+
+        if (isCrouching && gameObject.tag.Equals("Katya"))
+        {
+            gameObject.tag = "KatyaStealthMode";
+            Debug.Log(gameObject.tag);
+        }
+        else if (!isCrouching && !gameObject.tag.Equals("Katya"))
+        {
+            gameObject.tag = "Katya";
+            Debug.Log(gameObject.tag);
+        }
+
+        if (isMoving && isJumping)
 		{
             actions.Stay();
             actions.Jump();
             Jump();
         }
-		else if (IsJumping())
+		else if (isJumping)
 		{
             actions.Jump();
             Jump();
         }
-        else if (IsMoving() && IsRunning() && IsCrouching())
+        else if (isMoving && isRunning && isCrouching)
         {
             movementSpeedKey = "crouch-run";
             actions.Sitting();
             actions.Run();
         }
-        else if (IsMoving() && IsRunning())
+        else if (isMoving && isRunning)
         {
             movementSpeedKey = "run";
             actions.Run();
         }
-        else if (IsMoving() && IsCrouching())
+        else if (isMoving && isCrouching)
         {
             movementSpeedKey = "crouch-walk";
             actions.Sitting();
             actions.Walk();
         }
-        else if (IsMoving())
+        else if (isMoving)
 		{
             movementSpeedKey = "walk";
             actions.Walk();
 		}
-        else if (IsCrouching())
+        else if (isCrouching)
         {
             actions.Stay();
             actions.Sitting();
@@ -190,11 +204,10 @@ public class PlayerController : MonoBehaviour, Target
         return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
     }
 
-	private void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
         Turn();
-        
     }
 
     private void Move()
@@ -294,7 +307,7 @@ public class PlayerController : MonoBehaviour, Target
 	private void OnCollisionEnter(Collision collision)
     {
         // TODO: Add collision handling depending on tags of objects
-        actions.Damage();
+        //actions.Damage();
     }
 
     [System.Serializable]
