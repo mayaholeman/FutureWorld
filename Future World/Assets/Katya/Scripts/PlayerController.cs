@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, Target
@@ -13,6 +14,13 @@ public class PlayerController : MonoBehaviour, Target
     public Speed[] speeds;
 
     public Vector3 jump;
+
+	public LayerMask interactionMask;	// Everything we can interact with
+
+    public delegate void OnFocusChanged(Interactable newFocus);
+	public OnFocusChanged onFocusChangedCallback;
+
+	public Interactable focus;	// Our current focus: Item, Enemy etc.
 
     private IDictionary<string, float> speedsDict;
     private string movementSpeedKey = "walk";
@@ -99,6 +107,9 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+			return;
+            
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
         {
             actions.GetUp();
@@ -165,6 +176,15 @@ public class PlayerController : MonoBehaviour, Target
         else if (Input.GetMouseButtonUp(1))
         {
             actions.Stay();
+        }
+        else if (Input.GetMouseButtonDown(0)){
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			// If we hit
+			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
+			{
+				SetFocus(hit.collider.GetComponent<Interactable>());
+			}
         }
 
 		if (Input.GetKeyDown(KeyCode.F))
@@ -269,6 +289,30 @@ public class PlayerController : MonoBehaviour, Target
 
         }
     }
+
+    void SetFocus (Interactable newFocus)
+	{
+		if (onFocusChangedCallback != null)
+			onFocusChangedCallback.Invoke(newFocus);
+
+		// If our focus has changed
+		if (focus != newFocus && focus != null)
+		{
+			// Let our previous focus know that it's no longer being focused
+			focus.OnDefocused();
+		}
+
+		// Set our focus to what we hit
+		// If it's not an interactable, simply set it to null
+		focus = newFocus;
+
+		if (focus != null)
+		{
+			// Let our focus know that it's being focused
+			focus.OnFocused(transform);
+		}
+
+	}
 
 	public float Health
 	{

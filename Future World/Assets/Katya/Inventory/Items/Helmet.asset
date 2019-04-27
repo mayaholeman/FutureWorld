@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4946147bc3c33d2418ef020da58acb9e, type: 3}
-  m_Name: New Item
+  m_Name: Helmet
   m_EditorClassIdentifier: 
-  name: TestItem
-  icon: {fileID: 21300000, guid: 62709babd4f84a34f8942138ce64e0ab, type: 3}
+  name: New Item
+  icon: {fileID: 0}
   showInInventory: 1

@@ -50,6 +50,7 @@ public class Interactable : MonoBehaviour {
 	// Called when the object is no longer focused
 	public void OnDefocused ()
 	{
+        
 		isFocus = false;
 		player = null;
 		hasInteracted = false;

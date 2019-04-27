@@ -11,10 +11,13 @@ public class InventoryUI : MonoBehaviour {
 
 	Inventory inventory;	// Our current inventory
 
+    InventorySlot[] slots;
+
 	void Start ()
 	{
 		inventory = Inventory.instance;
 		inventory.onItemChangedCallback += UpdateUI;
+        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 	}
 
 	// Check to see if we should open/close the inventory
@@ -33,18 +36,17 @@ public class InventoryUI : MonoBehaviour {
 	// This is called using a delegate on the Inventory.
 	public void UpdateUI ()
 	{
-		// InventorySlot[] slots = GetComponentsInChildren<InventorySlot>();
 
-		// for (int i = 0; i < slots.Length; i++)
-		// {
-		// 	if (i < inventory.items.Count)
-		// 	{
-		// 		slots[i].AddItem(inventory.items[i]);
-		// 	} else
-		// 	{
-		// 		slots[i].ClearSlot();
-		// 	}
-		// }
+		for (int i = 0; i < slots.Length; i++)
+		{
+			if (i < inventory.items.Count)
+			{
+				slots[i].AddItem(inventory.items[i]);
+			} else
+			{
+				slots[i].ClearSlot();
+			}
+		}
 	}
 
 }
