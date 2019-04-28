@@ -14,8 +14,10 @@ public class ItemPickup : Interactable {
 	void PickUp ()
 	{
 		Debug.Log("Picking up " + item.name);
+        // GameObject itemGO = gameObject;
+        // item.setGameObject(itemGO);
 		Inventory.instance.Add(item);	// Add to inventory
-
+        
 		Destroy(gameObject);	// Destroy item from scene
 	}
 

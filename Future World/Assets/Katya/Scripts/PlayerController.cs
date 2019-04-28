@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, Target
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour, Target
     {
         if (EventSystem.current.IsPointerOverGameObject())
 			return;
-            
+
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
         {
             actions.GetUp();
@@ -322,7 +323,7 @@ public class PlayerController : MonoBehaviour, Target
 
 	public void Die()
 	{
-		Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void takeDamage(float amount)
@@ -331,6 +332,7 @@ public class PlayerController : MonoBehaviour, Target
 		if (this.health <= 0)
 		{
 			actions.Death();
+            Die();
 		}
 		else
 		{

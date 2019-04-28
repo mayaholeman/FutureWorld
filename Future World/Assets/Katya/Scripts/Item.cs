@@ -9,6 +9,8 @@ public class Item : ScriptableObject {
 	public Sprite icon = null;				// Item icon
 	public bool showInInventory = true;
 
+    public GameObject itemObject;
+
 	// Called when the item is pressed in the inventory
 	public virtual void Use ()
 	{
@@ -20,7 +22,12 @@ public class Item : ScriptableObject {
 	// Call this method to remove the item from inventory
 	public void RemoveFromInventory ()
 	{
+        // this.
 		Inventory.instance.Remove(this);
 	}
+
+    public void setGameObject(GameObject itemGO){
+        itemObject = itemGO;
+    }
 
 }

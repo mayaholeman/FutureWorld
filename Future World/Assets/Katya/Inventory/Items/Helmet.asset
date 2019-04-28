@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4946147bc3c33d2418ef020da58acb9e, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: Helmet
+  icon: {fileID: 21300000, guid: 836a05d1877b64b41a5d9cf8878cf587, type: 3}
   showInInventory: 1

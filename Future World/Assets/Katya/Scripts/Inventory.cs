@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour {
 	// Remove an item
 	public void Remove (Item item)
 	{
+        Instantiate(item.itemObject);
 		items.Remove(item);
 
 		if (onItemChangedCallback != null)
