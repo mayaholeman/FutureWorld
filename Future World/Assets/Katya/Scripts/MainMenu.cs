@@ -25,14 +25,16 @@ public class MainMenu : MonoBehaviour
        position.y = savedPlayer.position[1];
        position.z = savedPlayer.position[2];
 
-    //    Debug.Log("Player Level: " + savedPlayer.level);
-    //    Debug.Log("Player Health: " + savedPlayer.health);
+       Debug.Log("Player Level: " + savedPlayer.level);
+       Debug.Log("Player Health: " + savedPlayer.health);
 
-    //    Debug.Log("Position x: " + position.x);
-    //    Debug.Log("Position y: " + position.y);
-    //    Debug.Log("Position z: " + position.z);
+       Debug.Log("Position x: " + position.x);
+       Debug.Log("Position y: " + position.y);
+       Debug.Log("Position z: " + position.z);
 
        player.transform.position = position;
+
+       
 
     //    TargetData[] savedEnemies = SaveSystem.LoadEnemies(savedPlayer.level);
 
