@@ -229,6 +229,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1995619855073942387, guid: a230da988e0dc26479823d1cf4372215,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
     - target: {fileID: 3377008102108617185, guid: a230da988e0dc26479823d1cf4372215,
         type: 3}
       propertyPath: m_havePropertiesChanged
