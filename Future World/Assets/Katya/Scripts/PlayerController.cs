@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 
+    private int level = 1;
+
+    public GameObject enemies;
+
     void Awake()
     {
         actions = GetComponent<Actions>();
@@ -110,8 +114,11 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-			return;
+        // if (EventSystem.current.IsPointerOverGameObject()){
+        //     Debug.Log("Pointer over UI Object");
+        //     return;
+        // }
+			
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
         {
@@ -177,6 +184,7 @@ public class PlayerController : MonoBehaviour, Target
 		{
 			actions.Stay();
 		}
+        
 
 		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
 		{
@@ -186,8 +194,18 @@ public class PlayerController : MonoBehaviour, Target
                 nextTimeToFire = Time.time + 1f/fireRate;
 				Shoot();
 			}
+            
 			
-		}
+		} 
+        else if(Input.GetMouseButtonUp(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			// If we hit
+			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
+			{
+				SetFocus(hit.collider.GetComponent<Interactable>());
+			}
+        }
 		if (Input.GetMouseButton(1))
 		{
 			actions.Aiming();
@@ -197,20 +215,14 @@ public class PlayerController : MonoBehaviour, Target
         {
             actions.Stay();
         }
-        else if (Input.GetMouseButtonDown(0)){
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			// If we hit
-			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-			{
-				SetFocus(hit.collider.GetComponent<Interactable>());
-			}
-        }
 
-		if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
 		{
 			SwitchWeapon();
-		}
+		} 
+        
+
+		
 
 	}
 
@@ -238,6 +250,13 @@ public class PlayerController : MonoBehaviour, Target
     {
         Move();
         Turn();
+    }
+
+    private void LateUpdate() {
+        if(enemies.GetComponentsInChildren<Target>().Length == 0) {
+            level++;
+             SceneManager.LoadScene(level);
+        }
     }
 
     private void Move()
@@ -339,6 +358,12 @@ public class PlayerController : MonoBehaviour, Target
 		set { this.health = value; }
 	}
 
+    public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
+	}
+
 	public void Die()
 	{
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -360,6 +385,9 @@ public class PlayerController : MonoBehaviour, Target
 
 	}
 
+    public void SavePlayer() {
+        SaveSystem.SavePlayer(this,gameObject.transform.position);
+    }
      public float Dist()
      {
          return distanceSquared; 
