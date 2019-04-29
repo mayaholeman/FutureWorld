@@ -86,7 +86,7 @@ public class Titan : MonoBehaviour, Target {
      //        }
     	// }
 
-    	// beam.enabled = true;
+    	beam.enabled = true;
     }
 
     void Update() {
