@@ -23,6 +23,23 @@ public class PlayerController : MonoBehaviour, Target
 
 	public Interactable focus;	// Our current focus: Item, Enemy etc.
 
+    public float distanceSquared = 5f;
+	public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+
+    public float impactForce = 100f;
+    public float fireRate = 15f;
+
+    public SimpleHealthBar healthBar;
+
+    private float nextTimeToFire = 0f;
+	public float health = 100f;
+    public float maxHealth = 100f;
+	public float range = 100f;
+	private float yaw = 0.0f;
+	private int arsenalIndex = 0;
+    private bool stealthMode = false;
+    
     private IDictionary<string, float> speedsDict;
     private string movementSpeedKey = "walk";
 
@@ -31,23 +48,10 @@ public class PlayerController : MonoBehaviour, Target
     private Vector3 movement;
     private Rigidbody playerRigidbody;
 
-    public float distanceSquared = 5f;
-	public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
 
-    public float impactForce = 100f;
+    private int level = 1;
 
-    public float fireRate = 15f;
-
-
-    private float nextTimeToFire = 0f;
-    
-	public float health = 100f;
-	public float range = 100f;
-
-	private float yaw = 0.0f;
-
-	private int arsenalIndex = 0;
+    public GameObject enemies;
 
     void Awake()
     {
@@ -63,7 +67,9 @@ public class PlayerController : MonoBehaviour, Target
         }
         jump = new Vector3(0.0f, 02.0f, 0.0f); 
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
-     }
+
+        healthBar.UpdateBar(this.health, this.maxHealth);
+    }
  
 
 	private void OnEnable()
@@ -108,48 +114,68 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-			return;
+        // if (EventSystem.current.IsPointerOverGameObject()){
+        //     Debug.Log("Pointer over UI Object");
+        //     return;
+        // }
+			
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
         {
             actions.GetUp();
         }
 
-        if (IsMoving() && IsJumping())
+        // Movement Actions
+        bool isMoving = IsMoving();
+        bool isJumping = IsJumping();
+        bool isCrouching = IsCrouching();
+        bool isRunning = IsRunning();
+
+        if (isCrouching && gameObject.tag.Equals("Katya"))
+        {
+            gameObject.tag = "KatyaStealthMode";
+            Debug.Log(gameObject.tag);
+        }
+        else if (!isCrouching && !gameObject.tag.Equals("Katya"))
+        {
+            gameObject.tag = "Katya";
+            Debug.Log(gameObject.tag);
+        }
+
+        if (isMoving && isJumping)
 		{
             actions.Stay();
             actions.Jump();
             Jump();
         }
-		else if (IsJumping())
+		else if (isJumping)
 		{
             actions.Jump();
             Jump();
         }
-        else if (IsMoving() && IsRunning() && IsCrouching())
+        else if (isMoving && isRunning && isCrouching)
         {
             movementSpeedKey = "crouch-run";
             actions.Sitting();
             actions.Run();
         }
-        else if (IsMoving() && IsRunning())
+        else if (isMoving && isRunning)
         {
             movementSpeedKey = "run";
             actions.Run();
         }
-        else if (IsMoving() && IsCrouching())
+        else if (isMoving && isCrouching)
         {
             movementSpeedKey = "crouch-walk";
             actions.Sitting();
             actions.Walk();
         }
-        else if (IsMoving())
+        else if (isMoving)
 		{
             movementSpeedKey = "walk";
             actions.Walk();
 		}
-        else if (IsCrouching())
+        else if (isCrouching)
         {
             actions.Stay();
             actions.Sitting();
@@ -158,6 +184,7 @@ public class PlayerController : MonoBehaviour, Target
 		{
 			actions.Stay();
 		}
+        
 
 		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
 		{
@@ -167,8 +194,18 @@ public class PlayerController : MonoBehaviour, Target
                 nextTimeToFire = Time.time + 1f/fireRate;
 				Shoot();
 			}
+            
 			
-		}
+		} 
+        else if(Input.GetMouseButtonUp(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			// If we hit
+			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
+			{
+				SetFocus(hit.collider.GetComponent<Interactable>());
+			}
+        }
 		if (Input.GetMouseButton(1))
 		{
 			actions.Aiming();
@@ -178,20 +215,14 @@ public class PlayerController : MonoBehaviour, Target
         {
             actions.Stay();
         }
-        else if (Input.GetMouseButtonDown(0)){
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			// If we hit
-			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-			{
-				SetFocus(hit.collider.GetComponent<Interactable>());
-			}
-        }
 
-		if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
 		{
 			SwitchWeapon();
-		}
+		} 
+        
+
+		
 
 	}
 
@@ -215,11 +246,17 @@ public class PlayerController : MonoBehaviour, Target
         return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
     }
 
-	private void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
         Turn();
-        
+    }
+
+    private void LateUpdate() {
+        if(enemies.GetComponentsInChildren<Target>().Length == 0) {
+            level++;
+             SceneManager.LoadScene(level);
+        }
     }
 
     private void Move()
@@ -321,6 +358,12 @@ public class PlayerController : MonoBehaviour, Target
 		set { this.health = value; }
 	}
 
+    public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
+	}
+
 	public void Die()
 	{
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -329,7 +372,8 @@ public class PlayerController : MonoBehaviour, Target
 	public void takeDamage(float amount)
 	{
 		this.health -= amount;
-		if (this.health <= 0)
+        healthBar.UpdateBar(this.health, this.maxHealth);
+        if (this.health <= 0)
 		{
 			actions.Death();
             Die();
@@ -340,6 +384,10 @@ public class PlayerController : MonoBehaviour, Target
 		}
 
 	}
+
+    public void SavePlayer() {
+        SaveSystem.SavePlayer(this,gameObject.transform.position);
+    }
      public float Dist()
      {
          return distanceSquared; 
@@ -348,7 +396,7 @@ public class PlayerController : MonoBehaviour, Target
 	private void OnCollisionEnter(Collision collision)
     {
         // TODO: Add collision handling depending on tags of objects
-        actions.Damage();
+        //actions.Damage();
     }
 
     [System.Serializable]

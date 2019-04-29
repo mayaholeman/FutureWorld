@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-
   - StaticObjects
   - Katya
   - Shooties
+  - FxTemporaire
+  - KatyaStealthMode
   layers:
   - Default
   - TransparentFX
@@ -21,10 +22,8 @@ TagManager:
   - StaticObjects
   - Katya
   - Bot
+  - Items
   - Shooties
-  - 
-  - 
-  - 
   - 
   - 
   - 

@@ -7,6 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
+    public PlayerController player;
+    public GameObject playerGO;
+    public GameObject enemies;
+
     public GameObject pauseMenuUI;
 
     // Update is called once per frame
@@ -38,6 +42,25 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
+
+     public void SavePlayer() {
+        SaveSystem.SavePlayer(player,playerGO.transform.position);
+    }
+
+    public void SaveEnemies() {
+        Target[] enemyList = enemies.GetComponentsInChildren<Target>();
+        // GameObject[] enemyGOs = enemies.GetComponentsInChildren<GameObject>();
+        // for(int i = 0; i < enemyList.Length; i ++) {
+        //     SaveSystem.SaveEnemies(enemyList,enemyGOs);
+        // }
+    }
+
+    public void SaveScene() {
+        SavePlayer();
+        // SaveEnemies();
+    }
+
+    
 
     public void QuitGame() {
         Debug.Log("Quitting Game");
