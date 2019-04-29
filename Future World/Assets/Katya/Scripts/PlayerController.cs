@@ -23,6 +23,23 @@ public class PlayerController : MonoBehaviour, Target
 
 	public Interactable focus;	// Our current focus: Item, Enemy etc.
 
+    public float distanceSquared = 5f;
+	public ParticleSystem muzzleFlash;
+    public GameObject impactEffect;
+
+    public float impactForce = 100f;
+    public float fireRate = 15f;
+
+    public SimpleHealthBar healthBar;
+
+    private float nextTimeToFire = 0f;
+	public float health = 100f;
+    public float maxHealth = 100f;
+	public float range = 100f;
+	private float yaw = 0.0f;
+	private int arsenalIndex = 0;
+    private bool stealthMode = false;
+    
     private IDictionary<string, float> speedsDict;
     private string movementSpeedKey = "walk";
 
@@ -31,20 +48,6 @@ public class PlayerController : MonoBehaviour, Target
     private Vector3 movement;
     private Rigidbody playerRigidbody;
 
-    public float distanceSquared = 5f;
-	public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
-
-    public float impactForce = 100f;
-    public float fireRate = 15f;
-
-
-    private float nextTimeToFire = 0f;
-	public float health = 100f;
-	public float range = 100f;
-	private float yaw = 0.0f;
-	private int arsenalIndex = 0;
-    private bool stealthMode = false;
 
     void Awake()
     {
@@ -60,7 +63,9 @@ public class PlayerController : MonoBehaviour, Target
         }
         jump = new Vector3(0.0f, 02.0f, 0.0f); 
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
-     }
+
+        healthBar.UpdateBar(this.health, this.maxHealth);
+    }
  
 
 	private void OnEnable()
@@ -342,7 +347,8 @@ public class PlayerController : MonoBehaviour, Target
 	public void takeDamage(float amount)
 	{
 		this.health -= amount;
-		if (this.health <= 0)
+        healthBar.UpdateBar(this.health, this.maxHealth);
+        if (this.health <= 0)
 		{
 			actions.Death();
             Die();
@@ -353,6 +359,7 @@ public class PlayerController : MonoBehaviour, Target
 		}
 
 	}
+
      public float Dist()
      {
          return distanceSquared; 
