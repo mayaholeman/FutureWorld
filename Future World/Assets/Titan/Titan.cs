@@ -13,6 +13,7 @@ public class Titan : MonoBehaviour, Target {
     protected int SHOOTCTR_LIM = 300;
     protected int AIMING_DUR = 100;
     protected int SHOOTING_DUR = 25;
+	public int level = 2;
 
     protected bool seesPlayer = true;
 
@@ -26,7 +27,13 @@ public class Titan : MonoBehaviour, Target {
         set { this.health = value; }
     }
 
-    public void Die()
+	public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
+	}
+
+	public void Die()
     {
         Destroy(gameObject);
     }
