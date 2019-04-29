@@ -19,6 +19,7 @@ public class SecurityRobot : MonoBehaviour, Target
     //Shooting variables
     public float shootingRange = 100f;
     GameObject robotGun;
+    protected int level = 2;
 
     GameObject GetChildWithName(GameObject obj, string name)
     {
@@ -98,4 +99,10 @@ public class SecurityRobot : MonoBehaviour, Target
             Die();
         }
     }
+
+    public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
+	}
 }
