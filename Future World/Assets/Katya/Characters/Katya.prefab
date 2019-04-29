@@ -1684,6 +1684,11 @@ MonoBehaviour:
   - name: jump-force
     speed: 2
   jump: {x: 0, y: 0, z: 0}
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  focus: {fileID: 0}
+  distanceSquared: 5
   muzzleFlash: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
   impactEffect: {fileID: 100002, guid: 957385c45b877e645a128e11a3efb2f9, type: 3}
   impactForce: 100
