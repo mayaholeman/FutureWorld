@@ -1693,8 +1693,11 @@ MonoBehaviour:
   impactEffect: {fileID: 100002, guid: 957385c45b877e645a128e11a3efb2f9, type: 3}
   impactForce: 100
   fireRate: 15
-  health: 100
+  healthBar: {fileID: 0}
+  health: 500
+  maxHealth: 500
   range: 100
+  enemies: {fileID: 0}
 --- !u!54 &616595267151171081
 Rigidbody:
   m_ObjectHideFlags: 0

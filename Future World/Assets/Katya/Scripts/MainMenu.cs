@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public PlayerController player;
     private List<GameObject> enemies;
     public void PlayGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -18,8 +17,6 @@ public class MainMenu : MonoBehaviour
 
     public void LoadScene() {
         TargetData savedPlayer = SaveSystem.LoadPlayer();
-        player.Level = savedPlayer.level;
-        player.health = savedPlayer.health;
         Vector3 position;
        position.x = savedPlayer.position[0];
        position.y = savedPlayer.position[1];
@@ -31,8 +28,6 @@ public class MainMenu : MonoBehaviour
        Debug.Log("Position x: " + position.x);
        Debug.Log("Position y: " + position.y);
        Debug.Log("Position z: " + position.z);
-
-       player.transform.position = position;
 
        
 
@@ -49,7 +44,23 @@ public class MainMenu : MonoBehaviour
     //    player.transform.position = position;
     //    }
 
-       SceneManager.LoadScene(savedPlayer.level);
+       SceneManager.LoadScene(savedPlayer.level); 
+       
+       var scene = SceneManager.GetSceneByBuildIndex(savedPlayer.level);
+       var rootGameObjects = scene.GetRootGameObjects();
+       foreach (GameObject go in rootGameObjects) {
+           if (go.CompareTag("Katya")) {
+               var pc = go.GetComponent<PlayerController>();
+               pc.Level = savedPlayer.level;
+               pc.Health = savedPlayer.health;
+               position.x = savedPlayer.position[0];
+               position.y = savedPlayer.position[1];
+                position.z = savedPlayer.position[2];
+                pc.transform.position = position;
 
+
+           }
+       }
+       
     }
 }
