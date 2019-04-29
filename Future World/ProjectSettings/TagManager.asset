@@ -23,7 +23,7 @@ TagManager:
   - Katya
   - Bot
   - Shooties
-  - KatyaStealthMode
+  - 
   - 
   - 
   - 
@@ -48,9 +48,6 @@ TagManager:
     locked: 0
   - name: Katya
     uniqueID: 2490548493
-    locked: 0
-  - name: KatyaStealthMode
-    uniqueID: 3347947615
     locked: 0
   - name: StaticObject
     uniqueID: 1746110447
