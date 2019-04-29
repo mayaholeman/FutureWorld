@@ -112,9 +112,10 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject()){
-            return;
-        }
+        // if (EventSystem.current.IsPointerOverGameObject()){
+        //     Debug.Log("Pointer over UI Object");
+        //     return;
+        // }
 			
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour, Target
 		{
 			actions.Stay();
 		}
+        
 
 		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
 		{
@@ -173,8 +175,18 @@ public class PlayerController : MonoBehaviour, Target
                 nextTimeToFire = Time.time + 1f/fireRate;
 				Shoot();
 			}
+            
 			
-		}
+		} 
+        else if(Input.GetMouseButtonUp(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			// If we hit
+			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
+			{
+				SetFocus(hit.collider.GetComponent<Interactable>());
+			}
+        }
 		if (Input.GetMouseButton(1))
 		{
 			actions.Aiming();
@@ -184,21 +196,14 @@ public class PlayerController : MonoBehaviour, Target
         {
             actions.Stay();
         }
-        
 
-		if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
 		{
 			SwitchWeapon();
 		} 
-        // else if (Input.GetKeyDown(KeyCode.T)){//(Input.GetMouseButtonDown(0)){
-        //      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		// 	RaycastHit hit;
-		// 	// If we hit
-		// 	if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-		// 	{
-		// 		SetFocus(hit.collider.GetComponent<Interactable>());
-		// 	}
-        // }
+        
+
+		
 
 	}
 
