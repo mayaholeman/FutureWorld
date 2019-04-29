@@ -15,11 +15,15 @@ public class SecurityRobot : MonoBehaviour, Target
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
     Animator anim;                      // Reference to the animator component.
+    float visionRange = 10f;
+    bool seenPlayer = false;
 
     //Shooting variables
-    public float shootingRange = 100f;
+    public float shootingRange = 200f;
     GameObject robotGun;
     protected int level = 2;
+    int shootDelayCounter;
+    float gunDamage = 10f;
 
     GameObject GetChildWithName(GameObject obj, string name)
     {
@@ -27,10 +31,12 @@ public class SecurityRobot : MonoBehaviour, Target
         Transform childTrans = trans.Find(name);
         if (childTrans != null)
         {
+            //childTrans.gameObject.SetActive(false);
             return childTrans.gameObject;
         }
         else
         {
+            print("Cannot find child named " + name);
             return null;
         }
     }
@@ -40,39 +46,73 @@ public class SecurityRobot : MonoBehaviour, Target
         // Set up the references.
         player = GameObject.FindGameObjectWithTag("Katya").transform;
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        nav.speed = 0.8f;
         anim = GetComponent<Animator>();
-        robotGun = GetChildWithName(this.gameObject, "AssualtRifle");
+        robotGun = GetChildWithName(this.gameObject, "AssaultRifle");
+        shootDelayCounter = Random.Range(0, 60);
     }
 
     void FixedUpdate()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist > 2)
+        shootDelayCounter = ((shootDelayCounter + 1) % 60);
+        if (!seenPlayer)
         {
-            // Tell the animator whether or not the robot is moving.
-            anim.SetBool("IsMoving", true);
-
-            // Set the destination of the nav mesh agent to the player.
-            nav.SetDestination(player.position);
+            RaycastHit vision;
+            //Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out vision, visionRange);
+            Physics.SphereCast(gameObject.transform.position, 2f, gameObject.transform.forward, out vision, visionRange);
+            GameObject visionTarget = vision.collider.gameObject;
+            if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            //if(dist < 2) { seenPlayer = true; }
         }
         else
         {
-            nav.enabled = false;
+            if (dist > 4)
+            {
+                // Tell the animator whether or not the robot is moving.
+                nav.enabled = true;
+                anim.SetBool("IsMoving", true);
+                anim.SetBool("IsShooting", false);
 
-            // Tell the animator whether or not the robot is moving.
-            anim.SetBool("IsMoving", false);
+                // Set the destination of the nav mesh agent to the player.
+                nav.SetDestination(player.position);
+            }
+            else if (dist < 4)
+            {
+                nav.enabled = false;
+                this.gameObject.transform.LookAt(player.transform);
+                // Tell the animator whether or not the robot is moving.
+                //anim.SetBool("IsMoving", false);
+
+                if(shootDelayCounter == 0)
+                {
+                    //print("shoot");
+                    anim.SetBool("IsShooting", true);
+                    Shoot(robotGun, gunDamage);
+                } else if (shootDelayCounter == 10)
+                {
+                    anim.SetBool("IsShooting", false);
+                }
+                else
+                {
+                    anim.SetBool("IsMoving", false);
+                }
+            }
         }
-
     }
 
     private void Shoot(GameObject gun, float damage)
     {
         RaycastHit hit;
-        if (Physics.Raycast(gun.transform.position, gameObject.transform.forward, out hit, shootingRange))
+        Vector3 gunPos = gun.transform.position;
+        gunPos.y = gunPos.y + 0.6f;
+        if (Physics.Raycast(gunPos, gun.transform.forward, out hit, shootingRange))
         {
             Debug.Log(hit.transform.name);
+            Debug.DrawRay(gunPos, gun.transform.forward * shootingRange, Color.green);
             Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
+            //if (target != null)
+            if(hit.transform.name == "Katya")
             {
                 target.takeDamage(damage);
             }
