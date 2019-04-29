@@ -10,6 +10,8 @@ public class StandardBot : MonoBehaviour, Target {
     protected float health = 15f;
     protected float movementSpeed = 2f;
 
+    protected int level = 1;
+
     public float Health
     {
         get { return this.health; }
@@ -30,4 +32,10 @@ public class StandardBot : MonoBehaviour, Target {
             Die();
         }
     }
+
+    public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
+	}
 }

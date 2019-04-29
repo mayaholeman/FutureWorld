@@ -24,4 +24,4 @@
 - Katya is floating by only a little bit
 - Add a roof and lighting to the room
 - add a texture to the floor and walls
-- Add wall fading ability (good for when camera is stuck in the wall)
+- Add wall fading ability (good for when camera is stuck in the wall) 

@@ -3,7 +3,8 @@ guid: aa271c46344f25f4a9b32dac1208e995
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - katya: {fileID: 9010068731422491801, guid: 9230cf8f0d1a41648ac58be0d650b040, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

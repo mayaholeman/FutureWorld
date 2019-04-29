@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestEnemy : MonoBehaviour, Target
 {
 	private float health = 50;
+
+	private int level = 1;
 	public float Health
 	{
 		get{ return this.health;}
@@ -24,6 +26,12 @@ public class TestEnemy : MonoBehaviour, Target
 			Die();
 		}
 
+	}
+
+	public int Level
+	{
+		get { return this.level; }
+		set { this.level = value; }
 	}
 
 
