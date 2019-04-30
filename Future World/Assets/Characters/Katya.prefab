@@ -471,7 +471,7 @@ MonoBehaviour:
     damage: 20
   speeds:
   - name: turn
-    speed: 2
+    speed: 4
   - name: walk
     speed: 0.5
   - name: run

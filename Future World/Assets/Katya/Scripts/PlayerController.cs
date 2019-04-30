@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour, Target
 		}
         
 
-		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+		if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
 		{
 			actions.Attack();
 			if (arsenalIndex != 0)
