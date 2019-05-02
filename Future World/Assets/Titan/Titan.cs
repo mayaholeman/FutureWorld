@@ -68,7 +68,7 @@ public class Titan : MonoBehaviour, Target {
     	var points = new Vector3[2];
 
     	points[0] = transform.position + new Vector3(0, -1f, 0);
-    	points[1] = targetPos + new Vector3(0, 1f, 0);
+    	points[1] = targetPos + new Vector3(0, 0.25f, 0);
 
     	beam.SetPositions(points);
 
@@ -104,7 +104,7 @@ public class Titan : MonoBehaviour, Target {
     void Update() {
     	Vector3 direction = target.position - transform.position;
     	float angle = Vector3.Angle(direction, transform.forward);
-    	Debug.Log("Angle: " + angle);
+    	// Debug.Log("Angle: " + angle);
     	if (angle <= FOV) {
     		RaycastHit hit;
     		if (Physics.Raycast(transform.position, direction, out hit, 1000f)) {
