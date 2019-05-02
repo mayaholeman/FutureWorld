@@ -16,7 +16,7 @@ public class SecurityRobot : MonoBehaviour, Target
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
     Animator anim;                      // Reference to the animator component.
-    float visionRange = 10f;
+    float visionRange = 20f;
     bool seenPlayer = false;
 
     //Shooting variables
