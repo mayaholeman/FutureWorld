@@ -7,13 +7,14 @@ public class Titan : MonoBehaviour, Target {
 	[Header("Set in Inspector")]
 	public Transform target;
 	public LineRenderer beam;
+	public Material eyeMaterial;
 
     protected float health = 200f;
     protected float movementSpeed = 2f;
     protected int SHOOTCTR_LIM = 300;
     protected int AIMING_DUR = 100;
     protected int SHOOTING_DUR = 25;
-    protected float FOV = 60f;
+    protected float FOV = 70f;
 
     protected bool seesPlayer = true;
 
@@ -68,7 +69,7 @@ public class Titan : MonoBehaviour, Target {
     	var points = new Vector3[2];
 
     	points[0] = transform.position + new Vector3(0, -1f, 0);
-    	points[1] = targetPos + new Vector3(0, 1f, 0);
+    	points[1] = targetPos + new Vector3(0, 0.25f, 0);
 
     	beam.SetPositions(points);
 
@@ -102,31 +103,33 @@ public class Titan : MonoBehaviour, Target {
     }
 
     void Update() {
-    	Vector3 direction = target.position - transform.position;
-    	float angle = Vector3.Angle(direction, transform.forward);
-    	Debug.Log("Angle: " + angle);
-    	if (angle <= FOV) {
-    		RaycastHit hit;
-    		if (Physics.Raycast(transform.position, direction, out hit, 1000f)) {
-    			if (hit.transform.name == "Katya") {
-    				seesPlayer = true;
-    			} else {
-    				seesPlayer = false;
-    			}
-    		}
-    	} else {
-    		seesPlayer = false;
-    	}
+    	if (shootctr > 0) {
+	    	Vector3 direction = target.position - transform.position;
+	    	float angle = Vector3.Angle(direction, transform.forward);
+	    	// Debug.Log("Angle: " + angle);
+	    	if (angle <= FOV) {
+	    		RaycastHit hit;
+	    		if (Physics.Raycast(transform.position, direction, out hit, 1000f)) {
+	    			if (hit.transform.name == "Katya") {
+	    				seesPlayer = true;
+	    			} else {
+	    				seesPlayer = false;
+	    			}
+	    		}
+	    	} else {
+	    		seesPlayer = false;
+	    	}
+	    }
 
     	if (!seesPlayer) {
     		shootctr = SHOOTCTR_LIM;
 			aiming = AIMING_DUR;
 			shooting = SHOOTING_DUR;
 			beam.enabled = false;
-			// set color of charger to green
+			eyeMaterial.SetColor("_Color", new Color(0.1f, 0.8f, 0.1f, 1f));
 			transform.Rotate(0, Time.deltaTime * movementSpeed * 20, 0, Space.Self);
     	} else {
-    		// set color of charger to red
+    		eyeMaterial.SetColor("_Color", new Color(0.7f, 0.2f, 0.2f, 1f));
 	    	if (shootctr > 0) {
 		    	Vector3 lookPos = target.position - transform.position;
 				lookPos.y = 0;
@@ -134,29 +137,31 @@ public class Titan : MonoBehaviour, Target {
 				transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * movementSpeed);
 				shootctr--;
 			}
+		}
 
-			if (shootctr <= 0) {
-				// freeze position, shoot beam at last Katya location
-				if (aiming == AIMING_DUR) {
-					Aim(target.position);
+		if (shootctr <= 0) {
+			// freeze position, shoot beam at last Katya location
+			if (aiming == AIMING_DUR) {
+				Aim(target.position);
+				eyeMaterial.SetColor("_Color", new Color(0f, 0.2f, 0.2f, 1f));
+			}
+			aiming--;
+			if (aiming > 0) {
+				float red = (AIMING_DUR - aiming)/100f;
+				eyeMaterial.SetColor("_Color", new Color(red * 0.7f, 0.2f, 0.2f, 1f));
+			}
+			if (aiming <= 0) {
+				if (shooting == SHOOTING_DUR) {
+					Shoot();
 				}
-				aiming--;
-				if (aiming > 0) {
-					
-				}
-				if (aiming <= 0) {
-					if (shooting == SHOOTING_DUR) {
-						Shoot();
-					}
-					shooting--;
+				shooting--;
 
-					if (shooting <= 0) {
-						shootctr = SHOOTCTR_LIM;
-						aiming = AIMING_DUR;
-						shooting = SHOOTING_DUR;
-						beam.enabled = false;
-						// Debug.Log("Resuming");
-					}
+				if (shooting <= 0) {
+					shootctr = SHOOTCTR_LIM;
+					aiming = AIMING_DUR;
+					shooting = SHOOTING_DUR;
+					beam.enabled = false;
+					// Debug.Log("Resuming");
 				}
 			}
 		}
