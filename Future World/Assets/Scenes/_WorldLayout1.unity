@@ -124,11 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katya
       objectReference: {fileID: 0}
-    - target: {fileID: 9010068731422491801, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: m_TagString
-      value: Katya
-      objectReference: {fileID: 0}
     - target: {fileID: 9010068731422660793, guid: 9230cf8f0d1a41648ac58be0d650b040,
         type: 3}
       propertyPath: m_LocalPosition.x

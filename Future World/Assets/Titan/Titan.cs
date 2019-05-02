@@ -53,6 +53,7 @@ public class Titan : MonoBehaviour, Target {
     	shootctr = SHOOTCTR_LIM;
     	shooting = SHOOTING_DUR;
     	beam.enabled = false;
+		beam = Instantiate(beam);
     }
 
     void Aim(Vector3 targetPos) {
@@ -76,22 +77,22 @@ public class Titan : MonoBehaviour, Target {
     void Shoot() {
     	RaycastHit hit;
 
-    	// Vector3 source = beam.GetPosition(0);
-    	// Vector3 lastLocation = beam.GetPosition(1);
+    	Vector3 source = beam.GetPosition(0);
+    	Vector3 lastLocation = beam.GetPosition(1);
 
-    	// if (Physics.Raycast(source, lastLocation, out hit, 1000f)) {
-    	// 	var points = new Vector3[2];
-    	// 	points[0] = source;
-    	// 	points[1] = hit.transform.position;
-    	// 	beam.SetPositions(points);
+    	if (Physics.Raycast(source, lastLocation, out hit, 1000f)) {
+    		var points = new Vector3[2];
+    		points[0] = source;
+    		points[1] = hit.transform.position;
+    		beam.SetPositions(points);
 
-    	// 	Debug.Log("Hit " + hit.transform.name);
-     //        Target target = hit.transform.GetComponent<Target>();
-     //        if (target != null)
-     //        {
-     //            target.takeDamage(70);
-     //        }
-    	// }
+    		Debug.Log("Hit " + hit.transform.name);
+            Target target = hit.transform.GetComponent<Target>();
+            if (target != null)
+            {
+                target.takeDamage(70);
+            }
+    	}
 
     	beam.enabled = true;
     }

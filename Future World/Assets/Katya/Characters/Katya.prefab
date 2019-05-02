@@ -1672,15 +1672,15 @@ MonoBehaviour:
     damage: 20
   speeds:
   - name: turn
-    speed: 2
+    speed: 4
   - name: walk
-    speed: 0.5
+    speed: 2
   - name: run
-    speed: 1.5
+    speed: 4
   - name: crouch-walk
-    speed: 0.4
-  - name: crouch-run
     speed: 1
+  - name: crouch-run
+    speed: 2
   - name: jump-force
     speed: 2
   jump: {x: 0, y: 0, z: 0}

@@ -339,16 +339,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katya
       objectReference: {fileID: 0}
-    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 1032094342}
-    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
-        type: 3}
-      propertyPath: enemies
-      value: 
-      objectReference: {fileID: 999526129}
     - target: {fileID: 616595267151171082, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,6 +393,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1032094342}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: enemies
+      value: 
+      objectReference: {fileID: 999526129}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: speeds.Array.data[0].speed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c80dc1fb49f0458155903ab118114, type: 3}

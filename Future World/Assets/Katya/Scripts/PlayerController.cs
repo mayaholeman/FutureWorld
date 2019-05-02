@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 
-    private int level = 1;
+    private int level = 0;
 
     public GameObject enemies;
 
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour, Target
         actions = GetComponent<Actions>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        level = 1;
 		if (arsenal.Length > 0)
 			SetArsenal(arsenal[0].name);
         speedsDict = new Dictionary<string, float>();
@@ -186,7 +187,7 @@ public class PlayerController : MonoBehaviour, Target
 		}
         
 
-		if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
+		if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
 		{
 			actions.Attack();
 			if (arsenalIndex != 0)
@@ -255,6 +256,7 @@ public class PlayerController : MonoBehaviour, Target
     private void LateUpdate() {
         if(enemies.GetComponentsInChildren<Target>().Length == 0) {
             level++;
+            Debug.Log("This is the level:" + level);
              SceneManager.LoadScene(level);
         }
     }
@@ -384,6 +386,15 @@ public class PlayerController : MonoBehaviour, Target
 		}
 
 	}
+
+    public void Heal(float healthGain) {
+        this.health += healthGain;
+        if (this.health >= this.maxHealth)
+		{
+            this.health = this.maxHealth;
+		}
+		healthBar.UpdateBar(this.health, this.maxHealth);
+    }
 
     public void SavePlayer() {
         SaveSystem.SavePlayer(this,gameObject.transform.position);
