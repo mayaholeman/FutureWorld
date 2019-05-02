@@ -53,6 +53,7 @@ public class Titan : MonoBehaviour, Target {
     	shootctr = SHOOTCTR_LIM;
     	shooting = SHOOTING_DUR;
     	beam.enabled = false;
+    	beam = Instantiate(beam);
     }
 
     void Aim(Vector3 targetPos) {
@@ -60,12 +61,12 @@ public class Titan : MonoBehaviour, Target {
 
     	beam.enabled = false;
     	beam.startWidth = 0.1f;
-    	beam.endWidth = 0.75f;
+    	beam.endWidth = 0.5f; // probably more like 0.5f;
 
     	var points = new Vector3[2];
 
     	points[0] = transform.position + new Vector3(0, -1f, 0);
-    	points[1] = targetPos;
+    	points[1] = targetPos + new Vector3(0, 1f, 0);
 
     	beam.SetPositions(points);
 
@@ -76,63 +77,84 @@ public class Titan : MonoBehaviour, Target {
     void Shoot() {
     	RaycastHit hit;
 
-    	// Vector3 source = beam.GetPosition(0);
-    	// Vector3 lastLocation = beam.GetPosition(1);
+    	Vector3 source = beam.GetPosition(0);
+    	Vector3 lastLocation = beam.GetPosition(1);
 
-    	// if (Physics.Raycast(source, lastLocation, out hit, 1000f)) {
-    	// 	var points = new Vector3[2];
-    	// 	points[0] = source;
-    	// 	points[1] = hit.transform.position;
-    	// 	beam.SetPositions(points);
+    	Vector3 direction = (source - lastLocation).normalized;
 
-    	// 	Debug.Log("Hit " + hit.transform.name);
-     //        Target target = hit.transform.GetComponent<Target>();
-     //        if (target != null)
-     //        {
-     //            target.takeDamage(70);
-     //        }
-    	// }
+    	if (Physics.Raycast(source, -direction, out hit, 1000f)) {
+    		var points = new Vector3[2];
+    		points[0] = source;
+    		points[1] = hit.point;
+    		beam.SetPositions(points);
+
+    		Debug.Log("Hit " + hit.transform.name);
+            Target target = hit.transform.GetComponent<Target>();
+            if (target != null && hit.transform.name == "Katya")
+            {
+                target.takeDamage(70);
+            }
+    	}
 
     	beam.enabled = true;
     }
 
     void Update() {
+    	// bool found = false;
+    	// RaycastHit[] visible = Physics.SphereCastAll(transform.position, 15f, transform.forward, 0f);
+    	// foreach (RaycastHit hit in visible) {
+    	// 	if (hit.collider.gameObject.tag == "Katya") {
+    	// 		found = true;
+    	// 	}
+    	// }
+    	// seesPlayer = found;
+
+    	// int mask = 1 << 10;
+    	// if (Physics.SphereCastNonAlloc(transform.position, 100f, Vector3.zero, null, 0, mask) == 0) {
+    	// 	seesPlayer = false;
+    	// } else {
+    	// 	seesPlayer = true;
+    	// }
+
     	if (!seesPlayer) {
     		shootctr = SHOOTCTR_LIM;
 			aiming = AIMING_DUR;
 			shooting = SHOOTING_DUR;
 			beam.enabled = false;
-    	}
-
-    	if (seesPlayer && shootctr > 0) {
-	    	Vector3 lookPos = target.position - transform.position;
-			lookPos.y = 0;
-			Quaternion rotation = Quaternion.LookRotation(lookPos);
-			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * movementSpeed);
-			shootctr--;
-		}
-
-		if (shootctr <= 0) {
-			// freeze position, shoot beam at last Katya location
-			if (aiming == AIMING_DUR) {
-				Aim(target.position);
+			// set color of charger to green
+			// rotate
+    	} else {
+    		// set color of charger to red
+	    	if (shootctr > 0) {
+		    	Vector3 lookPos = target.position - transform.position;
+				lookPos.y = 0;
+				Quaternion rotation = Quaternion.LookRotation(lookPos);
+				transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * movementSpeed);
+				shootctr--;
 			}
-			aiming--;
-			if (aiming > 0) {
-				
-			}
-			if (aiming <= 0) {
-				if (shooting == SHOOTING_DUR) {
-					Shoot();
+
+			if (shootctr <= 0) {
+				// freeze position, shoot beam at last Katya location
+				if (aiming == AIMING_DUR) {
+					Aim(target.position);
 				}
-				shooting--;
+				aiming--;
+				if (aiming > 0) {
+					
+				}
+				if (aiming <= 0) {
+					if (shooting == SHOOTING_DUR) {
+						Shoot();
+					}
+					shooting--;
 
-				if (shooting <= 0) {
-					shootctr = SHOOTCTR_LIM;
-					aiming = AIMING_DUR;
-					shooting = SHOOTING_DUR;
-					beam.enabled = false;
-					// Debug.Log("Resuming");
+					if (shooting <= 0) {
+						shootctr = SHOOTCTR_LIM;
+						aiming = AIMING_DUR;
+						shooting = SHOOTING_DUR;
+						beam.enabled = false;
+						// Debug.Log("Resuming");
+					}
 				}
 			}
 		}
