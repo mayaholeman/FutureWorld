@@ -13,9 +13,11 @@ public class Titan : MonoBehaviour, Target {
     protected int SHOOTCTR_LIM = 300;
     protected int AIMING_DUR = 100;
     protected int SHOOTING_DUR = 25;
-	public int level = 2;
+    protected float FOV = 60f;
 
     protected bool seesPlayer = true;
+
+	public int level = 2;
 
     private int shootctr;
     private int aiming;
@@ -100,21 +102,21 @@ public class Titan : MonoBehaviour, Target {
     }
 
     void Update() {
-    	// bool found = false;
-    	// RaycastHit[] visible = Physics.SphereCastAll(transform.position, 15f, transform.forward, 0f);
-    	// foreach (RaycastHit hit in visible) {
-    	// 	if (hit.collider.gameObject.tag == "Katya") {
-    	// 		found = true;
-    	// 	}
-    	// }
-    	// seesPlayer = found;
-
-    	// int mask = 1 << 10;
-    	// if (Physics.SphereCastNonAlloc(transform.position, 100f, Vector3.zero, null, 0, mask) == 0) {
-    	// 	seesPlayer = false;
-    	// } else {
-    	// 	seesPlayer = true;
-    	// }
+    	Vector3 direction = target.position - transform.position;
+    	float angle = Vector3.Angle(direction, transform.forward);
+    	Debug.Log("Angle: " + angle);
+    	if (angle <= FOV) {
+    		RaycastHit hit;
+    		if (Physics.Raycast(transform.position, direction, out hit, 1000f)) {
+    			if (hit.transform.name == "Katya") {
+    				seesPlayer = true;
+    			} else {
+    				seesPlayer = false;
+    			}
+    		}
+    	} else {
+    		seesPlayer = false;
+    	}
 
     	if (!seesPlayer) {
     		shootctr = SHOOTCTR_LIM;
@@ -122,7 +124,7 @@ public class Titan : MonoBehaviour, Target {
 			shooting = SHOOTING_DUR;
 			beam.enabled = false;
 			// set color of charger to green
-			// rotate
+			transform.Rotate(0, Time.deltaTime * movementSpeed * 20, 0, Space.Self);
     	} else {
     		// set color of charger to red
 	    	if (shootctr > 0) {
