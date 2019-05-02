@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, Target
     public float fireRate = 15f;
 
     public SimpleHealthBar healthBar;
+    public DamageUIFlash damageFlash;
 
     private float nextTimeToFire = 0f;
 	public float health = 100f;
@@ -373,6 +374,8 @@ public class PlayerController : MonoBehaviour, Target
 	{
 		this.health -= amount;
         healthBar.UpdateBar(this.health, this.maxHealth);
+        damageFlash.TakeDamage();
+
         if (this.health <= 0)
 		{
 			actions.Death();
