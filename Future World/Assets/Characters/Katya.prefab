@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1840550195}
   m_Layer: 0
   m_Name: Katya
-  m_TagString: Player
+  m_TagString: Katya
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -473,11 +473,11 @@ MonoBehaviour:
   - name: turn
     speed: 4
   - name: walk
-    speed: 0.5
+    speed: 1
   - name: run
-    speed: 1.5
+    speed: 2
   - name: crouch-walk
-    speed: 0.4
+    speed: 0.5
   - name: crouch-run
     speed: 1
   - name: jump-force
@@ -493,6 +493,7 @@ MonoBehaviour:
   impactForce: 100
   fireRate: 5
   healthBar: {fileID: 0}
+  damageFlash: {fileID: 0}
   health: 500
   maxHealth: 500
   range: 100

@@ -5033,14 +5033,14 @@ PrefabInstance:
       objectReference: {fileID: 1249360260}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
-      propertyPath: enemies
-      value: 
-      objectReference: {fileID: 1363942506}
-    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
-        type: 3}
       propertyPath: damageFlash
       value: 
       objectReference: {fileID: 739693732}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: enemies
+      value: 
+      objectReference: {fileID: 1363942506}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c80dc1fb49f0458155903ab118114, type: 3}
 --- !u!114 &1959617402 stripped

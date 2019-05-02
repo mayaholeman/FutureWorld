@@ -124,11 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katya
       objectReference: {fileID: 0}
-    - target: {fileID: 9010068731422491801, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
-      propertyPath: m_TagString
-      value: Katya
-      objectReference: {fileID: 0}
     - target: {fileID: 9010068731422660793, guid: 9230cf8f0d1a41648ac58be0d650b040,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,14 +186,14 @@ PrefabInstance:
       objectReference: {fileID: 1705013327}
     - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
         type: 3}
-      propertyPath: enemies
-      value: 
-      objectReference: {fileID: 745659945}
-    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
-        type: 3}
       propertyPath: damageFlash
       value: 
       objectReference: {fileID: 1849688270}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: enemies
+      value: 
+      objectReference: {fileID: 745659945}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9230cf8f0d1a41648ac58be0d650b040, type: 3}
 --- !u!114 &44143721 stripped
