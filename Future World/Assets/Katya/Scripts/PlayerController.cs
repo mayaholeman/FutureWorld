@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, Target
     private Vector3 movement;
     private Rigidbody playerRigidbody;
 
-
+    private bool dead = false;
     private int level = 1;
 
     public GameObject enemies;
@@ -119,112 +119,111 @@ public class PlayerController : MonoBehaviour, Target
         //     Debug.Log("Pointer over UI Object");
         //     return;
         // }
-			
 
-        if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
+        if (!dead)
         {
-            actions.GetUp();
-        }
+            if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl))
+            {
+                actions.GetUp();
+            }
 
-        // Movement Actions
-        bool isMoving = IsMoving();
-        bool isJumping = IsJumping();
-        bool isCrouching = IsCrouching();
-        bool isRunning = IsRunning();
+            // Movement Actions
+            bool isMoving = IsMoving();
+            bool isJumping = IsJumping();
+            bool isCrouching = IsCrouching();
+            bool isRunning = IsRunning();
 
-        if (isCrouching && gameObject.tag.Equals("Katya"))
-        {
-            gameObject.tag = "KatyaStealthMode";
-            Debug.Log(gameObject.tag);
-        }
-        else if (!isCrouching && !gameObject.tag.Equals("Katya"))
-        {
-            gameObject.tag = "Katya";
-            Debug.Log(gameObject.tag);
-        }
+            if (isCrouching && gameObject.tag.Equals("Katya"))
+            {
+                gameObject.tag = "KatyaStealthMode";
+                Debug.Log(gameObject.tag);
+            }
+            else if (!isCrouching && !gameObject.tag.Equals("Katya"))
+            {
+                gameObject.tag = "Katya";
+                Debug.Log(gameObject.tag);
+            }
 
-        if (isMoving && isJumping)
-		{
-            actions.Stay();
-            actions.Jump();
-            Jump();
-        }
-		else if (isJumping)
-		{
-            actions.Jump();
-            Jump();
-        }
-        else if (isMoving && isRunning && isCrouching)
-        {
-            movementSpeedKey = "crouch-run";
-            actions.Sitting();
-            actions.Run();
-        }
-        else if (isMoving && isRunning)
-        {
-            movementSpeedKey = "run";
-            actions.Run();
-        }
-        else if (isMoving && isCrouching)
-        {
-            movementSpeedKey = "crouch-walk";
-            actions.Sitting();
-            actions.Walk();
-        }
-        else if (isMoving)
-		{
-            movementSpeedKey = "walk";
-            actions.Walk();
-		}
-        else if (isCrouching)
-        {
-            actions.Stay();
-            actions.Sitting();
-        }
-		else
-		{
-			actions.Stay();
-		}
-        
+            if (isMoving && isJumping)
+            {
+                actions.Stay();
+                actions.Jump();
+                Jump();
+            }
+            else if (isJumping)
+            {
+                actions.Jump();
+                Jump();
+            }
+            else if (isMoving && isRunning && isCrouching)
+            {
+                movementSpeedKey = "crouch-run";
+                actions.Sitting();
+                actions.Run();
+            }
+            else if (isMoving && isRunning)
+            {
+                movementSpeedKey = "run";
+                actions.Run();
+            }
+            else if (isMoving && isCrouching)
+            {
+                movementSpeedKey = "crouch-walk";
+                actions.Sitting();
+                actions.Walk();
+            }
+            else if (isMoving)
+            {
+                movementSpeedKey = "walk";
+                actions.Walk();
+            }
+            else if (isCrouching)
+            {
+                actions.Stay();
+                actions.Sitting();
+            }
+            else
+            {
+                actions.Stay();
+            }
 
-		if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
-		{
-			actions.Attack();
-			if (arsenalIndex != 0)
-			{
-                nextTimeToFire = Time.time + 1f/fireRate;
-				Shoot();
-			}
-            
-			
-		} 
-        else if(Input.GetMouseButtonUp(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			// If we hit
-			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-			{
-				SetFocus(hit.collider.GetComponent<Interactable>());
-			}
+
+            if (Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
+            {
+                actions.Attack();
+                if (arsenalIndex != 0)
+                {
+                    nextTimeToFire = Time.time + 1f / fireRate;
+                    Shoot();
+                }
+
+
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                // If we hit
+                if (Physics.Raycast(ray, out hit, 100f, interactionMask))
+                {
+                    SetFocus(hit.collider.GetComponent<Interactable>());
+                }
+            }
+            if (Input.GetMouseButton(1))
+            {
+                actions.Aiming();
+
+            }
+            else if (Input.GetMouseButtonUp(1))
+            {
+                actions.Stay();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                SwitchWeapon();
+            }
         }
-		if (Input.GetMouseButton(1))
-		{
-			actions.Aiming();
-			
-		}
-        else if (Input.GetMouseButtonUp(1))
-        {
-            actions.Stay();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-		{
-			SwitchWeapon();
-		} 
-        
-
-		
-
 	}
 
     private bool IsMoving()
@@ -365,28 +364,36 @@ public class PlayerController : MonoBehaviour, Target
 		set { this.level = value; }
 	}
 
-	public void Die()
-	{
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
-
 	public void takeDamage(float amount)
 	{
 		this.health -= amount;
-        healthBar.UpdateBar(this.health, this.maxHealth);
-        damageFlash.TakeDamage();
 
-        if (this.health <= 0)
+        if (this.health <= 0 && !dead)
 		{
-			actions.Death();
             Die();
 		}
-		else
+		else if (!dead)
 		{
 			actions.Damage();
-		}
+            healthBar.UpdateBar(this.health, this.maxHealth);
+            damageFlash.TakeDamage();
+        }
 
 	}
+
+    public void Die()
+    {
+        dead = true;
+        healthBar.UpdateBar(this.health, this.maxHealth);
+        StartCoroutine(KatyaDeath());
+    }
+
+    IEnumerator KatyaDeath()
+    {
+        actions.Death();
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void SavePlayer() {
         SaveSystem.SavePlayer(this,gameObject.transform.position);
