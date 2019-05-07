@@ -522,11 +522,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1540573443}
   - {fileID: 632322652}
   - {fileID: 761233181}
   - {fileID: 1705013328}
   - {fileID: 913985105}
+  - {fileID: 1540573443}
   - {fileID: 1251608322}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -875,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 3149965565642031197, guid: dbab44d9f0e50f344acbd07721727635,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3149965565642031197, guid: dbab44d9f0e50f344acbd07721727635,
         type: 3}
@@ -2072,7 +2072,7 @@ PrefabInstance:
     - target: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
         type: 3}
@@ -3237,7 +3237,7 @@ PrefabInstance:
     - target: {fileID: 5788579312728022288, guid: e10207d43868a6048b5330e762c7b654,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5788579312728022288, guid: e10207d43868a6048b5330e762c7b654,
         type: 3}
@@ -3901,7 +3901,7 @@ PrefabInstance:
     - target: {fileID: 1105927538748259366, guid: 866457747cccd0b44804831de7c17238,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1105927538748259366, guid: 866457747cccd0b44804831de7c17238,
         type: 3}
@@ -4040,7 +4040,7 @@ PrefabInstance:
     - target: {fileID: 5457601033163266419, guid: 4885f33663642d24eae45f1471f50d7d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5457601033163266419, guid: 4885f33663642d24eae45f1471f50d7d,
         type: 3}
@@ -4270,6 +4270,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TriggerDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637670721426556728, guid: 53afe79393184f144a688e2554f8f5f0,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: 'To move use the W key to move forward, S key to move backward, A key
+        to move to the left, and D key to move to the right. '
       objectReference: {fileID: 0}
     - target: {fileID: 5637670721520820945, guid: 53afe79393184f144a688e2554f8f5f0,
         type: 3}
