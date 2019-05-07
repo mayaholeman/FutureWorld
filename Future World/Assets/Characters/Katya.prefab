@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1840550195}
   m_Layer: 0
   m_Name: Katya
-  m_TagString: Player
+  m_TagString: Katya
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
     damage: 20
   speeds:
   - name: turn
-    speed: 2
+    speed: 4
   - name: walk
     speed: 0.5
   - name: run
@@ -483,12 +483,20 @@ MonoBehaviour:
   - name: jump-force
     speed: 2
   jump: {x: 0, y: 0, z: 0}
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  focus: {fileID: 0}
+  distanceSquared: 5
   muzzleFlash: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
   impactEffect: {fileID: 100002, guid: 957385c45b877e645a128e11a3efb2f9, type: 3}
   impactForce: 100
-  fireRate: 15
-  health: 100
+  fireRate: 5
+  healthBar: {fileID: 0}
+  health: 500
+  maxHealth: 500
   range: 100
+  enemies: {fileID: 0}
 --- !u!54 &1840550196
 Rigidbody:
   m_ObjectHideFlags: 0

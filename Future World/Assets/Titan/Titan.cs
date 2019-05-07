@@ -56,7 +56,7 @@ public class Titan : MonoBehaviour, Target {
     	shootctr = SHOOTCTR_LIM;
     	shooting = SHOOTING_DUR;
     	beam.enabled = false;
-    	beam = Instantiate(beam);
+		beam = Instantiate(beam);
     }
 
     void Aim(Vector3 targetPos) {

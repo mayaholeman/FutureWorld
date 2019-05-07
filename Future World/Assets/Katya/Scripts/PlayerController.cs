@@ -49,12 +49,18 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 
-    private int level = 1;
+    public int level = 0;
 
     public GameObject enemies;
+#region Singleton
 
+	public static PlayerController instance;
+
+
+	#endregion
     void Awake()
     {
+        instance = this;
         actions = GetComponent<Actions>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -67,7 +73,6 @@ public class PlayerController : MonoBehaviour, Target
         }
         jump = new Vector3(0.0f, 02.0f, 0.0f); 
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
-
         healthBar.UpdateBar(this.health, this.maxHealth);
     }
  
@@ -197,15 +202,6 @@ public class PlayerController : MonoBehaviour, Target
             
 			
 		} 
-        else if(Input.GetMouseButtonUp(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			// If we hit
-			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-			{
-				SetFocus(hit.collider.GetComponent<Interactable>());
-			}
-        }
 		if (Input.GetMouseButton(1))
 		{
 			actions.Aiming();
@@ -225,6 +221,12 @@ public class PlayerController : MonoBehaviour, Target
 		
 
 	}
+
+    private void OnCollisionStay(Collision collision){
+        if(collision.collider.tag == "Item" && Input.GetKeyDown(KeyCode.T)) {
+            SetFocus(collision.collider.GetComponent<Interactable>());
+        }
+    }
 
     private bool IsMoving()
     {
@@ -253,9 +255,12 @@ public class PlayerController : MonoBehaviour, Target
     }
 
     private void LateUpdate() {
-        if(enemies.GetComponentsInChildren<Target>().Length == 0) {
+        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level != 3) {
             level++;
+            Debug.Log("This is the level:" + level);
              SceneManager.LoadScene(level);
+        } else {
+            //if level 3
         }
     }
 
@@ -384,6 +389,15 @@ public class PlayerController : MonoBehaviour, Target
 		}
 
 	}
+
+    public void Heal(float healthGain) {
+        this.health += healthGain;
+        if (this.health >= this.maxHealth)
+		{
+            this.health = this.maxHealth;
+		}
+		healthBar.UpdateBar(this.health, this.maxHealth);
+    }
 
     public void SavePlayer() {
         SaveSystem.SavePlayer(this,gameObject.transform.position);
