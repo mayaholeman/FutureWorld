@@ -9,6 +9,7 @@ TagManager:
   - Shooties
   - FxTemporaire
   - KatyaStealthMode
+  - Item
   layers:
   - Default
   - TransparentFX
