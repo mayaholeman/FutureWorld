@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
 
-    private int level = 0;
+    public int level = 0;
 
     public GameObject enemies;
 #region Singleton
@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour, Target
         actions = GetComponent<Actions>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
-        level = 1;
 		if (arsenal.Length > 0)
 			SetArsenal(arsenal[0].name);
         speedsDict = new Dictionary<string, float>();

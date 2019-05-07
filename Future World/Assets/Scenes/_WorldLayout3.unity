@@ -409,6 +409,11 @@ PrefabInstance:
       propertyPath: speeds.Array.data[0].speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c80dc1fb49f0458155903ab118114, type: 3}
 --- !u!1 &194339647
@@ -3873,6 +3878,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852821269124365356, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1559462251}
+    - target: {fileID: 7852821269124365356, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866457747cccd0b44804831de7c17238, type: 3}
