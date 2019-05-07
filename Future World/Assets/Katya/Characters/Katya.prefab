@@ -1674,10 +1674,12 @@ MonoBehaviour:
   - name: turn
     speed: 4
   - name: walk
-    speed: 2
+    speed: 1
   - name: run
-    speed: 4
+    speed: 2
   - name: crouch-walk
+    speed: 0.5
+  - name: crouch-run
     speed: 1
   - name: crouch-run
     speed: 2
@@ -1694,6 +1696,7 @@ MonoBehaviour:
   impactForce: 100
   fireRate: 15
   healthBar: {fileID: 0}
+  damageFlash: {fileID: 0}
   health: 500
   maxHealth: 500
   range: 100
