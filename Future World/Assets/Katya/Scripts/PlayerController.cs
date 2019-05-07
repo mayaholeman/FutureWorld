@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour, Target
         }
         jump = new Vector3(0.0f, 02.0f, 0.0f); 
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
-
         healthBar.UpdateBar(this.health, this.maxHealth);
     }
  
@@ -256,10 +255,12 @@ public class PlayerController : MonoBehaviour, Target
     }
 
     private void LateUpdate() {
-        if(enemies.GetComponentsInChildren<Target>().Length == 0) {
+        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level != 3) {
             level++;
             Debug.Log("This is the level:" + level);
              SceneManager.LoadScene(level);
+        } else {
+            //if level 3
         }
     }
 
