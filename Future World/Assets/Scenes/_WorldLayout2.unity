@@ -166,12 +166,12 @@ PrefabInstance:
     - target: {fileID: 2113759139676322774, guid: 5774867f008bd11458d5a6b82967153d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.82
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 2113759139676322774, guid: 5774867f008bd11458d5a6b82967153d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.84
+      value: 4.61
       objectReference: {fileID: 0}
     - target: {fileID: 2113759139676322774, guid: 5774867f008bd11458d5a6b82967153d,
         type: 3}
@@ -222,7 +222,7 @@ PrefabInstance:
         type: 3}
       propertyPath: beam
       value: 
-      objectReference: {fileID: 1881568637379045329, guid: a0b492c2db1f3aa47b47c3d91aca2450,
+      objectReference: {fileID: 5008010548735150193, guid: 74e73d9d78101bc45babc06408349d88,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5774867f008bd11458d5a6b82967153d, type: 3}
@@ -4831,6 +4831,9 @@ PrefabInstance:
       objectReference: {fileID: 1363942506}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1249360260}
       propertyPath: speeds.Array.data[1].speed
       value: 4
       objectReference: {fileID: 0}
