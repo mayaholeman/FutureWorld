@@ -24,9 +24,10 @@ public class DialogueManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        sentences = new Queue<string>();
     }
 	void Start () {
-		sentences = new Queue<string>();
+		
 	}
 
 	public void StartDialogue (Dialogue dialogue)
@@ -47,6 +48,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
+        Debug.Log("displaying next sentence: " + sentences.Count);
 		if (sentences.Count == 0)
 		{
 			EndDialogue();
@@ -70,6 +72,7 @@ public class DialogueManager : MonoBehaviour {
 
 	void EndDialogue()
 	{
+        // Debug.Log("End");
 		animator.SetBool("IsOpen", false);
 	}
 

@@ -497,6 +497,7 @@ MonoBehaviour:
   health: 500
   maxHealth: 500
   range: 100
+  level: 1
   enemies: {fileID: 0}
 --- !u!54 &1840550196
 Rigidbody:

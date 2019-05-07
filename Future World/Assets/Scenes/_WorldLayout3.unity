@@ -403,7 +403,7 @@ PrefabInstance:
         type: 3}
       propertyPath: damageFlash
       value: 
-      objectReference: {fileID: 521675044}
+      objectReference: {fileID: 505916652}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
       propertyPath: healthBar
@@ -937,7 +937,7 @@ Transform:
   m_Father: {fileID: 1368637096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &521675043
+--- !u!1001 &505916650
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1017,12 +1017,12 @@ PrefabInstance:
     - target: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1024
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 768
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
         type: 3}
@@ -1056,11 +1056,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5684025c86367b469218ca6b312acd5, type: 3}
---- !u!114 &521675044 stripped
+--- !u!224 &505916651 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 505916650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &505916652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1655411750119677908, guid: c5684025c86367b469218ca6b312acd5,
     type: 3}
-  m_PrefabInstance: {fileID: 521675043}
+  m_PrefabInstance: {fileID: 505916650}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1068,12 +1074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c449e512985549419c7e52ba6a52d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &521675045 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1655411750119677905, guid: c5684025c86367b469218ca6b312acd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 521675043}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &532255460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,7 +4505,7 @@ RectTransform:
   - {fileID: 1089563480}
   - {fileID: 862584518}
   - {fileID: 1398343711}
-  - {fileID: 521675045}
+  - {fileID: 505916651}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

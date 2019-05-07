@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Position y: " + position.y);
         Debug.Log("Position z: " + position.z);
         SceneManager.LoadScene(savedPlayer.level);
-        PlayerController.instance.level = savedPlayer.level;
+        PlayerController.instance.level= savedPlayer.level;
         PlayerController.instance.health = savedPlayer.health;
         position.x = savedPlayer.position[0];
         position.y = savedPlayer.position[1];

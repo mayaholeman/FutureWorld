@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour, Target
     private Rigidbody playerRigidbody;
 
     private bool dead = false;
-    private int level = 1;
+    public int level = 1;
 
     public GameObject enemies;
 #region Singleton

@@ -1681,8 +1681,6 @@ MonoBehaviour:
     speed: 0.5
   - name: crouch-run
     speed: 1
-  - name: crouch-run
-    speed: 2
   - name: jump-force
     speed: 2
   jump: {x: 0, y: 0, z: 0}
@@ -1700,6 +1698,7 @@ MonoBehaviour:
   health: 500
   maxHealth: 500
   range: 100
+  level: 1
   enemies: {fileID: 0}
 --- !u!54 &616595267151171081
 Rigidbody:

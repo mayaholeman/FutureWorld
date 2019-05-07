@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  beam: {fileID: 5008010548735150193, guid: 74e73d9d78101bc45babc06408349d88, type: 3}
+  beam: {fileID: 5503071644533950121, guid: 5a4faa50f651dcc449d727a12a60fae3, type: 3}
   eyeMaterial: {fileID: 2100000, guid: 36305cf81e1f0f544afb2bba351705c4, type: 2}
   level: 2
 --- !u!1001 &322617851986007258

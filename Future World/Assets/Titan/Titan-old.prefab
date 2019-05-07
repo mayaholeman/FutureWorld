@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2113759139676322774}
   - component: {fileID: 2113759139676322773}
   m_Layer: 0
-  m_Name: Titan
+  m_Name: Titan-old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  beam: {fileID: 0}
+  beam: {fileID: 5503071644533950121, guid: 5a4faa50f651dcc449d727a12a60fae3, type: 3}
+  eyeMaterial: {fileID: 2100000, guid: 36305cf81e1f0f544afb2bba351705c4, type: 2}
+  level: 2
 --- !u!1001 &2113759141673013995
 PrefabInstance:
   m_ObjectHideFlags: 0
