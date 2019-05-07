@@ -151,17 +151,14 @@ public class SecurityRobot : MonoBehaviour, Target
         }
     }
 
-<<<<<<< HEAD
     public int Level
 	{
 		get { return this.level; }
 		set { this.level = value; }
 	}
-=======
     IEnumerator Death()
     {
         yield return new WaitForSeconds(0.8f);
         Die();
     }
->>>>>>> origin/32_Security_Robot_AI
 }
