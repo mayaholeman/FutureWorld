@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6871c4f0e08b8a844b884ffb1f82acc2, type: 3}
   m_Name: HealthPack
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: HealthPack
+  icon: {fileID: 21300000, guid: 9c0539733abbd8e4caf2147da578f4a9, type: 3}
   showInInventory: 1
   itemObject: {fileID: 0}
-  healthGain: 0
-  player: {fileID: 0}
+  healthGain: 50
+  player: {fileID: 616595267151171083, guid: 756c80dc1fb49f0458155903ab118114, type: 3}

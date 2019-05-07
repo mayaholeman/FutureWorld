@@ -52,9 +52,15 @@ public class PlayerController : MonoBehaviour, Target
     private int level = 0;
 
     public GameObject enemies;
+#region Singleton
 
+	public static PlayerController instance;
+
+
+	#endregion
     void Awake()
     {
+        instance = this;
         actions = GetComponent<Actions>();
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -198,15 +204,6 @@ public class PlayerController : MonoBehaviour, Target
             
 			
 		} 
-        else if(Input.GetMouseButtonUp(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			// If we hit
-			if (Physics.Raycast(ray, out hit, 100f, interactionMask)) 
-			{
-				SetFocus(hit.collider.GetComponent<Interactable>());
-			}
-        }
 		if (Input.GetMouseButton(1))
 		{
 			actions.Aiming();
@@ -226,6 +223,12 @@ public class PlayerController : MonoBehaviour, Target
 		
 
 	}
+
+    private void OnCollisionStay(Collision collision){
+        if(collision.collider.tag == "Item" && Input.GetKeyDown(KeyCode.T)) {
+            SetFocus(collision.collider.GetComponent<Interactable>());
+        }
+    }
 
     private bool IsMoving()
     {
