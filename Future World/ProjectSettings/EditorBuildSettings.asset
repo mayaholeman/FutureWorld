@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/_WorldLayout3.unity
     guid: eaddb80e38a19a149933d77d49ddc015
   - enabled: 1
+    path: Assets/Scenes/_WorldLayout4.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
     path: Assets/Scenes/End Scene.unity
     guid: dac89700319fa2b479bad127436e6d95
   m_configObjects: {}
