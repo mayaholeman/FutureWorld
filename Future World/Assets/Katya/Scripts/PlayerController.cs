@@ -55,9 +55,13 @@ public class PlayerController : MonoBehaviour, Target
     public int computersHacked = 0;
 
     public GameObject enemies;
-#region Singleton
 
-	public static PlayerController instance;
+    int jumpCount = 0;
+    public int maxJumps = 1;
+
+    #region Singleton
+
+    public static PlayerController instance;
 
 
 	#endregion
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour, Target
         jump = new Vector3(0.0f, 02.0f, 0.0f); 
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
         healthBar.UpdateBar(this.health, this.maxHealth);
+        jumpCount = maxJumps;
     }
  
 
@@ -154,12 +159,10 @@ public class PlayerController : MonoBehaviour, Target
             if (isMoving && isJumping)
             {
                 actions.Stay();
-                actions.Jump();
                 Jump();
             }
             else if (isJumping)
             {
-                actions.Jump();
                 Jump();
             }
             else if (isMoving && isRunning && isCrouching)
@@ -290,7 +293,12 @@ public class PlayerController : MonoBehaviour, Target
 
     private void Jump()
     {
-        GetComponent<Rigidbody>().AddForce(jump * speedsDict["jump-force"], ForceMode.Impulse);
+        if (jumpCount > 0)
+        {
+            actions.Jump();
+            GetComponent<Rigidbody>().AddForce(jump * speedsDict["jump-force"], ForceMode.Impulse);
+            jumpCount--;
+        }
     }
 
 	private void SwitchWeapon()
@@ -429,8 +437,10 @@ public class PlayerController : MonoBehaviour, Target
 
 	private void OnCollisionEnter(Collision collision)
     {
-        // TODO: Add collision handling depending on tags of objects
-        //actions.Damage();
+        if (collision.gameObject.tag == "StaticObjects" || collision.gameObject.tag == "Item")
+        {
+            jumpCount = maxJumps;
+        }
     }
 
     [System.Serializable]

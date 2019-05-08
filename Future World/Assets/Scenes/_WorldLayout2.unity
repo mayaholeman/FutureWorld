@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 53965044}
   m_Layer: 0
   m_Name: SmallWall
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 83248840}
   m_Layer: 0
   m_Name: CPU
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 292606512}
   m_Layer: 0
   m_Name: RobotPlatform
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 298556929}
   m_Layer: 0
   m_Name: SmallWall (3)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 395308969}
   m_Layer: 0
   m_Name: BottomBox
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1576,7 +1576,7 @@ GameObject:
   - component: {fileID: 449148916}
   m_Layer: 0
   m_Name: SmallWall (4)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 654667883}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2101,7 +2101,7 @@ GameObject:
   - component: {fileID: 860827963}
   m_Layer: 0
   m_Name: Barricades
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2209,7 +2209,7 @@ GameObject:
   - component: {fileID: 1000386506}
   m_Layer: 0
   m_Name: TopBox
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2643,7 +2643,7 @@ GameObject:
   - component: {fileID: 1089410518}
   m_Layer: 0
   m_Name: Barricade (3)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2734,7 +2734,7 @@ GameObject:
   - component: {fileID: 1141643746}
   m_Layer: 0
   m_Name: Barricade
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3067,7 +3067,7 @@ GameObject:
   - component: {fileID: 1187912043}
   m_Layer: 0
   m_Name: Barricade (5)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3158,7 +3158,7 @@ GameObject:
   - component: {fileID: 1221600454}
   m_Layer: 0
   m_Name: SmallWall (5)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3622,7 +3622,7 @@ GameObject:
   - component: {fileID: 1444503211}
   m_Layer: 0
   m_Name: Barricade (1)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3844,7 +3844,7 @@ GameObject:
   - component: {fileID: 1490513034}
   m_Layer: 0
   m_Name: SmallWall (2)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4194,7 +4194,7 @@ GameObject:
   - component: {fileID: 1666995035}
   m_Layer: 0
   m_Name: RobotPlatform (1)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4285,7 +4285,7 @@ GameObject:
   - component: {fileID: 1668962465}
   m_Layer: 0
   m_Name: ConnectingWall
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4934,7 +4934,7 @@ GameObject:
   - component: {fileID: 1801028913}
   m_Layer: 0
   m_Name: Room2
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4978,7 +4978,7 @@ GameObject:
   - component: {fileID: 1846577980}
   m_Layer: 0
   m_Name: SmallWall (1)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5078,7 +5078,7 @@ GameObject:
   - component: {fileID: 1874576228}
   m_Layer: 0
   m_Name: Boxes
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5111,6 +5111,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1852783696}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1231305781}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 144126450}
     - target: {fileID: 9123271885880617050, guid: 51536c4fed4510049b4dd68a10aebb12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5166,21 +5181,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 1852783696}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 1231305781}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 144126450}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51536c4fed4510049b4dd68a10aebb12, type: 3}
 --- !u!1001 &1959617401
@@ -5435,7 +5435,7 @@ GameObject:
   - component: {fileID: 2039897255}
   m_Layer: 0
   m_Name: ConnectingWall (1)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5526,7 +5526,7 @@ GameObject:
   - component: {fileID: 2043243518}
   m_Layer: 0
   m_Name: Barricade (4)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5617,7 +5617,7 @@ GameObject:
   - component: {fileID: 2052188688}
   m_Layer: 0
   m_Name: Barricade (2)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

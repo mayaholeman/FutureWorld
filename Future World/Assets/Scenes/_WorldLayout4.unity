@@ -1271,6 +1271,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1507993349}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1507993348}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1507993347}
     - target: {fileID: 9123271885880617050, guid: 51536c4fed4510049b4dd68a10aebb12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1326,21 +1341,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 1507993349}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 1507993348}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1507993347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51536c4fed4510049b4dd68a10aebb12, type: 3}
 --- !u!1 &632003950
@@ -2713,7 +2713,7 @@ GameObject:
   - component: {fileID: 1281323678}
   m_Layer: 0
   m_Name: Box (2)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3103,7 +3103,7 @@ GameObject:
   - component: {fileID: 1396289295}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3843,7 +3843,7 @@ GameObject:
   - component: {fileID: 1854614770}
   m_Layer: 0
   m_Name: Box (1)
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4000,7 +4000,7 @@ GameObject:
   - component: {fileID: 1941246738}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

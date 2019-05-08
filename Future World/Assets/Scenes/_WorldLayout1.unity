@@ -603,6 +603,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 841973926}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 2130535009}
+    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1540573446}
     - target: {fileID: 9123271885880617050, guid: 51536c4fed4510049b4dd68a10aebb12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,21 +673,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 841973926}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 2130535009}
-    - target: {fileID: 9123271885880617029, guid: 51536c4fed4510049b4dd68a10aebb12,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1540573446}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51536c4fed4510049b4dd68a10aebb12, type: 3}
 --- !u!1001 &549405020
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 664996508}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 847295142}
   m_Layer: 0
   m_Name: ShootingRangeBottomWall
-  m_TagString: Untagged
+  m_TagString: StaticObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
