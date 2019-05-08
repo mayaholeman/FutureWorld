@@ -181,6 +181,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
         type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: endDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1705013327}
@@ -194,6 +204,28 @@ PrefabInstance:
       propertyPath: enemies
       value: 
       objectReference: {fileID: 745659945}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Percy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Congratulations on finishing your training. Now it's time to go on your
+        first solo\r mission."
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: endDialogue.name
+      value: Percy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010068731432710457, guid: 9230cf8f0d1a41648ac58be0d650b040,
+        type: 3}
+      propertyPath: endDialogue.sentences.Array.data[0]
+      value: Congratulations on finishing your training. It's time to go on your first
+        mission.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9230cf8f0d1a41648ac58be0d650b040, type: 3}
 --- !u!114 &44143721 stripped
@@ -3968,12 +4000,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1105927539331123901, guid: 866457747cccd0b44804831de7c17238,
+    - target: {fileID: 1105927538064269834, guid: 866457747cccd0b44804831de7c17238,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 314449195}
-    - target: {fileID: 1105927538064269834, guid: 866457747cccd0b44804831de7c17238,
+    - target: {fileID: 1105927539331123901, guid: 866457747cccd0b44804831de7c17238,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

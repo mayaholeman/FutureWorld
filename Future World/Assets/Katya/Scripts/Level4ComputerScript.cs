@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Level4ComputerScript : Interactable
@@ -11,9 +12,13 @@ public class Level4ComputerScript : Interactable
         DialogueManager.instance.StartDialogue(dialogue);
         gameObject.tag = "Untagged";
         if(PlayerController.instance.computersHacked == 2) {
-            SceneManager.LoadScene(5);
+            StartCoroutine(LoadLevel());
         }
-        
-		
 	}
+
+    IEnumerator LoadLevel()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(5);
+    }
 }
