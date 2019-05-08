@@ -264,12 +264,12 @@ public class PlayerController : MonoBehaviour, Target
     }
 
     private void LateUpdate() {
-        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level != 3) {
+        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level <= 2) {
             level++;
             Debug.Log("This is the level:" + level);
              SceneManager.LoadScene(level);
         } else {
-            //if level 3
+            //if level 3 and up
         }
     }
 

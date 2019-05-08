@@ -26,9 +26,12 @@ public class DialogueManager : MonoBehaviour {
         instance = this;
         sentences = new Queue<string>();
     }
-	void Start () {
-		
-	}
+	 private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            this.DisplayNextSentence();
+        }
+    }
 
 	public void StartDialogue (Dialogue dialogue)
 	{
