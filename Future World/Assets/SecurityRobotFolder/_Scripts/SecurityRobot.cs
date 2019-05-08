@@ -16,7 +16,7 @@ public class SecurityRobot : MonoBehaviour, Target
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
     Animator anim;                      // Reference to the animator component.
-    float visionRange = 20f;
+    float visionRange = 35f;
     bool seenPlayer = false;
 
     //Shooting variables
@@ -66,11 +66,14 @@ public class SecurityRobot : MonoBehaviour, Target
             direction.z = direction.z - 15 + (shootDelayCounter * 0.5f);
             Vector3 pos = gameObject.transform.position;
             pos.y = pos.y + 0.6f;
-            Physics.Raycast(pos, direction, out vision, visionRange);
+            bool raycastHitSomething = Physics.Raycast(pos, direction, out vision, visionRange);
             Debug.DrawRay(pos, direction * 10f, Color.red);
             //Physics.SphereCast(gameObject.transform.position, .3f, gameObject.transform.forward, out vision, 100f);
-            GameObject visionTarget = vision.collider.gameObject;
-            if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            if (raycastHitSomething)
+            {
+                GameObject visionTarget = vision.collider.gameObject;
+                if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            }
             //if(dist < 2) { seenPlayer = true; }
         }
         else
