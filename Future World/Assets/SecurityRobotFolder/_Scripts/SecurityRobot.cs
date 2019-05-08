@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 
 public class SecurityRobot : MonoBehaviour, Target
@@ -15,7 +16,7 @@ public class SecurityRobot : MonoBehaviour, Target
     Transform player;                   // Reference to the player's position.
     UnityEngine.AI.NavMeshAgent nav;    // Reference to the nav mesh agent.
     Animator anim;                      // Reference to the animator component.
-    float visionRange = 10f;
+    float visionRange = 35f;
     bool seenPlayer = false;
 
     //Shooting variables
@@ -24,6 +25,8 @@ public class SecurityRobot : MonoBehaviour, Target
     protected int level = 2;
     int shootDelayCounter;
     float gunDamage = 10f;
+
+    private System.Timers.Timer aTimer;
 
     GameObject GetChildWithName(GameObject obj, string name)
     {
@@ -59,15 +62,23 @@ public class SecurityRobot : MonoBehaviour, Target
         if (!seenPlayer)
         {
             RaycastHit vision;
-            //Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out vision, visionRange);
-            Physics.SphereCast(gameObject.transform.position, 2f, gameObject.transform.forward, out vision, visionRange);
-            GameObject visionTarget = vision.collider.gameObject;
-            if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            Vector3 direction = gameObject.transform.forward;
+            direction.z = direction.z - 15 + (shootDelayCounter * 0.5f);
+            Vector3 pos = gameObject.transform.position;
+            pos.y = pos.y + 0.6f;
+            bool raycastHitSomething = Physics.Raycast(pos, direction, out vision, visionRange);
+            Debug.DrawRay(pos, direction * 10f, Color.red);
+            //Physics.SphereCast(gameObject.transform.position, .3f, gameObject.transform.forward, out vision, 100f);
+            if (raycastHitSomething)
+            {
+                GameObject visionTarget = vision.collider.gameObject;
+                if (visionTarget.tag == "Katya") { seenPlayer = true; }
+            }
             //if(dist < 2) { seenPlayer = true; }
         }
         else
         {
-            if (dist > 4)
+            if (dist > 3)
             {
                 // Tell the animator whether or not the robot is moving.
                 nav.enabled = true;
@@ -77,7 +88,7 @@ public class SecurityRobot : MonoBehaviour, Target
                 // Set the destination of the nav mesh agent to the player.
                 nav.SetDestination(player.position);
             }
-            else if (dist < 4)
+            else if (dist < 3)
             {
                 nav.enabled = false;
                 this.gameObject.transform.LookAt(player.transform);
@@ -86,7 +97,6 @@ public class SecurityRobot : MonoBehaviour, Target
 
                 if(shootDelayCounter == 0)
                 {
-                    //print("shoot");
                     anim.SetBool("IsShooting", true);
                     Shoot(robotGun, gunDamage);
                 } else if (shootDelayCounter == 10)
@@ -111,7 +121,6 @@ public class SecurityRobot : MonoBehaviour, Target
             Debug.Log(hit.transform.name);
             Debug.DrawRay(gunPos, gun.transform.forward * shootingRange, Color.green);
             Target target = hit.transform.GetComponent<Target>();
-            //if (target != null)
             if(hit.transform.name == "Katya")
             {
                 target.takeDamage(damage);
@@ -130,13 +139,18 @@ public class SecurityRobot : MonoBehaviour, Target
         Destroy(this.gameObject);
     }
 
+    
+
     public void takeDamage(float amount)
     {
         Debug.Log("Security Bot took " + amount + " damage");
         this.health -= amount;
         if (this.health <= 0)
         {
-            Die();
+            print("Die Robot");
+            anim.SetBool("IsDead", true);
+            StartCoroutine(Death());
+            
         }
     }
 
@@ -145,4 +159,9 @@ public class SecurityRobot : MonoBehaviour, Target
 		get { return this.level; }
 		set { this.level = value; }
 	}
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Die();
+    }
 }

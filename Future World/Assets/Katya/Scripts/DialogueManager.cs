@@ -24,10 +24,14 @@ public class DialogueManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        sentences = new Queue<string>();
     }
-	void Start () {
-		sentences = new Queue<string>();
-	}
+	 private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            this.DisplayNextSentence();
+        }
+    }
 
 	public void StartDialogue (Dialogue dialogue)
 	{
