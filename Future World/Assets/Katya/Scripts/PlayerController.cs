@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour, Target
     private bool dead = false;
     public int level;
 
+    public int computersHacked = 0;
+
     public GameObject enemies;
 #region Singleton
 

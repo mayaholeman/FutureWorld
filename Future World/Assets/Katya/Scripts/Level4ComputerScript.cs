@@ -3,14 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class Level4ComputerScript : Interactable
 {
-    public int computerHacked = 0;
+    public Dialogue dialogue;
     public override void Interact()
 	{
-        computerHacked++;
+        PlayerController.instance.computersHacked++;
 		Debug.Log("Hacking the computer");
-        if(computerHacked == 2) {
+        DialogueManager.instance.StartDialogue(dialogue);
+        gameObject.tag = "Untagged";
+        if(PlayerController.instance.computersHacked == 2) {
             SceneManager.LoadScene(5);
         }
+        
 		
 	}
 }

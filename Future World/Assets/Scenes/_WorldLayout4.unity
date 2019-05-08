@@ -3623,7 +3623,7 @@ GameObject:
   - component: {fileID: 1821865037}
   m_Layer: 0
   m_Name: Computer
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3653,7 +3653,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1821865035
 MeshRenderer:
@@ -3714,7 +3714,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 1821865033}
-  computerHacked: 0
+  dialogue:
+    name: Katya
+    sentences:
+    - Hacking these computers is a lot of effort
 --- !u!1 &1831649318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,7 +3733,7 @@ GameObject:
   - component: {fileID: 1831649323}
   m_Layer: 0
   m_Name: Computer (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3760,7 +3763,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1831649321
 MeshRenderer:
@@ -3821,7 +3824,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 1831649319}
-  computerHacked: 0
+  dialogue:
+    name: Katya
+    sentences:
+    - Glad I took Computer Science at Rose-Hulman, hacking these things are a piece
+      of cake
 --- !u!1 &1854614768
 GameObject:
   m_ObjectHideFlags: 0
