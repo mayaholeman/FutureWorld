@@ -72,7 +72,7 @@ public class DialogueManager : MonoBehaviour {
 
 	void EndDialogue()
 	{
-        // Debug.Log("End");
+        Debug.Log("End");
 		animator.SetBool("IsOpen", false);
 	}
 
