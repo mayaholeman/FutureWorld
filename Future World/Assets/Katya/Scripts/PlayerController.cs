@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour, Target
     int jumpCount = 0;
     public int maxJumps = 1;
 
+    public Dialogue endDialogue;
+    private bool finishStarted;
+
     #region Singleton
 
     public static PlayerController instance;
@@ -82,6 +85,7 @@ public class PlayerController : MonoBehaviour, Target
         distanceSquared = (transform.position - Camera.main.transform.position).sqrMagnitude;
         healthBar.UpdateBar(this.health, this.maxHealth);
         jumpCount = maxJumps;
+        finishStarted = false;
     }
  
 
@@ -269,13 +273,21 @@ public class PlayerController : MonoBehaviour, Target
     }
 
     private void LateUpdate() {
-        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level <= 2) {
-            level++;
-            Debug.Log("This is the level:" + level);
-             SceneManager.LoadScene(level);
+        if(enemies.GetComponentsInChildren<Target>().Length == 0 && this.level <= 2 && !finishStarted) {
+            finishStarted = true;
+            StartCoroutine(LoadLevel());
         } else {
             //if level 3 and up
         }
+    }
+
+    IEnumerator LoadLevel()
+    {
+        level++;
+        Debug.Log("This is the level:" + level);
+        DialogueManager.instance.StartDialogue(endDialogue);
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(level);
     }
 
     private void Move()

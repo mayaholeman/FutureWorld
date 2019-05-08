@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1021,7 +1021,7 @@ Transform:
   - {fileID: 1776178531}
   - {fileID: 1817825869}
   - {fileID: 637482423}
-  - {fileID: 1324473644}
+  - {fileID: 229997556}
   - {fileID: 580174603}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1095,6 +1095,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a4935f37e58f74ca5938147fc6288a, type: 3}
+--- !u!224 &183765700 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3149965566616159586, guid: dbab44d9f0e50f344acbd07721727635,
+    type: 3}
+  m_PrefabInstance: {fileID: 82689171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &229997555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1152,6 +1158,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac2073ec8e965a9418374e28874818b4, type: 3}
+--- !u!4 &229997556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4678846624261166, guid: ac2073ec8e965a9418374e28874818b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 229997555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &260283526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1576,8 +1588,8 @@ Transform:
   m_Children:
   - {fileID: 1396289294}
   - {fileID: 1854614769}
-  - {fileID: 1281323677}
   - {fileID: 1821865033}
+  - {fileID: 1281323677}
   - {fileID: 1831649319}
   m_Father: {fileID: 898875218}
   m_RootOrder: 2
@@ -2116,11 +2128,57 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1105927539331123901, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1322441306}
+    - target: {fileID: 1105927539331123901, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105927538064269834, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1322441306}
+    - target: {fileID: 1105927538064269834, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105927540013130249, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1322441306}
+    - target: {fileID: 1105927540013130249, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852821269124365356, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1322441306}
+    - target: {fileID: 7852821269124365356, guid: 866457747cccd0b44804831de7c17238,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866457747cccd0b44804831de7c17238, type: 3}
 --- !u!224 &691424800 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1105927538748259366, guid: 866457747cccd0b44804831de7c17238,
+    type: 3}
+  m_PrefabInstance: {fileID: 691424799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &691424801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1105927538748259367, guid: 866457747cccd0b44804831de7c17238,
     type: 3}
   m_PrefabInstance: {fileID: 691424799}
   m_PrefabAsset: {fileID: 0}
@@ -3398,7 +3456,7 @@ Transform:
   m_LocalScale: {x: 8, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 338624348}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1281323678
 BoxCollider:
@@ -3576,6 +3634,8 @@ GameObject:
   - component: {fileID: 1322441304}
   - component: {fileID: 1322441303}
   - component: {fileID: 1322441302}
+  - component: {fileID: 1322441307}
+  - component: {fileID: 1322441306}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3668,12 +3728,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1324473644 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4678846624261166, guid: ac2073ec8e965a9418374e28874818b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 229997555}
+--- !u!114 &1322441306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322441301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff80c37b25b91954ab97bcaa114d3b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1382991843}
+  playerGO: {fileID: 169988312}
+  enemies: {fileID: 172700644}
+  pauseMenuUI: {fileID: 691424801}
+--- !u!114 &1322441307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322441301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8983c76740b713d48b4be2dfe9dcbf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 1410610015}
+  itemsParent: {fileID: 183765700}
 --- !u!1001 &1382991842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3743,6 +3827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
         type: 3}
+      propertyPath: endDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
       propertyPath: enemies
       value: 
       objectReference: {fileID: 172700644}
@@ -3761,8 +3850,30 @@ PrefabInstance:
       propertyPath: level
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: endDialogue.name
+      value: Percy
+      objectReference: {fileID: 0}
+    - target: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+        type: 3}
+      propertyPath: endDialogue.sentences.Array.data[0]
+      value: I'm impressed, you've done well completing all the missions.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c80dc1fb49f0458155903ab118114, type: 3}
+--- !u!114 &1382991843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 616595267151171079, guid: 756c80dc1fb49f0458155903ab118114,
+    type: 3}
+  m_PrefabInstance: {fileID: 1382991842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169988312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9aa840a3854ebd47b920d1a5c7d693f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1396289293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,6 +3965,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396289293}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1410610015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3149965565642031198, guid: dbab44d9f0e50f344acbd07721727635,
+    type: 3}
+  m_PrefabInstance: {fileID: 82689171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1411385833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4678846624261166, guid: ac2073ec8e965a9418374e28874818b4,
@@ -4486,7 +4603,7 @@ Transform:
   m_LocalScale: {x: 2, y: 6, z: 8}
   m_Children: []
   m_Father: {fileID: 338624348}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1821865034
 BoxCollider:
