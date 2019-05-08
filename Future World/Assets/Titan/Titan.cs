@@ -9,7 +9,7 @@ public class Titan : MonoBehaviour, Target {
 	public LineRenderer beam;
 	public Material eyeMaterial;
 
-    protected float health = 200f;
+    public float health = 200f;
     protected float movementSpeed = 2f;
     protected int SHOOTCTR_LIM = 300;
     protected int AIMING_DUR = 100;
